@@ -84,6 +84,25 @@ spec:
         - name: enrichment-elasticsearch-index-templates
           mountPath: /scripts/index-templates
 
+      - name: logging-bootstrap
+        image: 705370621539.dkr.ecr.us-west-2.amazonaws.com/pingcloud-monitoring/logging-bootstrap:v1.14.0.0-pdo-4027-create-logging-bootstrap
+        imagePullPolicy: Always
+        env:
+          - name: NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+        envFrom:
+        - configMapRef:
+            name: logging-bootstrap-environment-variables
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "300m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+
       restartPolicy: OnFailure
 
       volumes:

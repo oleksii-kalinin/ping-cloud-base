@@ -8,3 +8,10 @@ resources:
 - enrichment-resources.yaml
 - enrichment-bootstrap.yaml
 
+configMapGenerator:
+- name: logging-bootstrap-environment-variables
+  envs:
+    - env_vars
+
+generatorOptions:
+  disableNameSuffixHash: true
