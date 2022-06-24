@@ -166,7 +166,7 @@ PINGDATASYNC_IMAGE_TAG=v1.14-release-branch-latest
 ############################################################
 METADATA_IMAGE_TAG=v1.14-release-branch-latest
 HEALTHCHECK_IMAGE_TAG=v1.14-release-branch-latest
-P14C_BOOTSTRAP_IMAGE_TAG=v1.14.0.0-revert-p14c-bootstrap
+P14C_BOOTSTRAP_IMAGE_TAG=v1.14-release-branch-latest
 P14C_INTEGRATION_IMAGE_TAG=v1.14-release-branch-latest
 ANSIBLE_BELUGA_IMAGE_TAG=v1.14-release-branch-latest
 
