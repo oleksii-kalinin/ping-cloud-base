@@ -54,6 +54,8 @@ patchesStrategicMerge:
   apiVersion: v1
   kind: ServiceAccount
   metadata:
+    labels:
+      app: enrichment
     name: enrichment
     annotations:
       purpose: service-account-for-ping-cloud-stack
