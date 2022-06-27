@@ -11,5 +11,5 @@ resources:
 configMapGenerator:
   - name: logging-bootstrap-environment-variables
     behavior: merge
-    literals:
-      - SERVICE_SSM_PATH_PREFIX=${SERVICE_SSM_PATH_PREFIX}
+    files:
+      - env_vars
