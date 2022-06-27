@@ -76,9 +76,3 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: enrichment
-
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: logging-bootstrap-environment-variables
