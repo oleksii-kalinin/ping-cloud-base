@@ -5,7 +5,7 @@ resources:
 - ${K8S_GIT_URL}/k8s-configs/cluster-tools/base/logging?ref=${K8S_GIT_BRANCH}
 
 configMapGenerator:
-  - name: logging-bootstrap-environment-variables
-    behavior: merge
-    literals:
-      - SERVICE_SSM_PATH_PREFIX=${SERVICE_SSM_PATH_PREFIX}
+- name: elk-environment-variables
+  behavior: merge
+  envs:
+  - env_vars
