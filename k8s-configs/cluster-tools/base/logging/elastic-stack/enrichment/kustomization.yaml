@@ -10,6 +10,5 @@ resources:
 
 configMapGenerator:
   - name: logging-bootstrap-environment-variables
-    behavior: merge
-    files:
-      - env_vars
+    literals:
+      - SERVICE_SSM_PATH_PREFIX=/pcpt/service

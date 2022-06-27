@@ -65,6 +65,8 @@ patchesStrategicMerge:
   kind: ServiceAccount
   metadata:
     name: enrichment
+    labels:
+      app: enrichment
     annotations:
       purpose: service-account-for-ping-cloud-stack
       ${IRSA_PING_ANNOTATION_KEY_VALUE}
