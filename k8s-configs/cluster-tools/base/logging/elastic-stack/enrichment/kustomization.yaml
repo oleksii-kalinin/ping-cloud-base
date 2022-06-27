@@ -7,3 +7,9 @@ resources:
 - files
 - enrichment-resources.yaml
 - enrichment-bootstrap.yaml
+
+configMapGenerator:
+  - name: logging-bootstrap-environment-variables
+    behavior: merge
+    literals:
+      - SERVICE_SSM_PATH_PREFIX=${SERVICE_SSM_PATH_PREFIX}
