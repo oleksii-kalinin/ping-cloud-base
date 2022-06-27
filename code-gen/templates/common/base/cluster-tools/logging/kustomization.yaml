@@ -14,3 +14,17 @@ configMapGenerator:
   behavior: merge
   literals:
     - SERVICE_SSM_PATH_PREFIX=${SERVICE_SSM_PATH_PREFIX}
+
+patchesStrategicMerge:
+
+### enrichment-bootstrap service account ###
+- |-
+  apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    labels:
+      app: enrichment
+    name: enrichment
+    annotations:
+      purpose: service-account-for-ping-cloud-stack
+      ${IRSA_PING_ANNOTATION_KEY_VALUE}
