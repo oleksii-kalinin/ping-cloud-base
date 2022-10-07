@@ -12,12 +12,12 @@ spec:
       role: pf-provisioning
   instances:
     - name: instance1
-      replicas: 3
+      replicas: 1
       minAvailable: 1
       resources:
         requests:
           cpu: 2
-          memory: 20Gi
+          memory: 4Gi
       dataVolumeClaimSpec:
         storageClassName: pgo-gp2
         accessModes:
