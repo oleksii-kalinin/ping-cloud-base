@@ -1,0 +1,56 @@
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: prom-webhook
+spec:
+  service:
+    ports:
+      - port: 13000
+        targetPort: 13000
+  webhook:
+    prom-webhook:
+      port: "13000"
+      endpoint: /notification
+      method: POST
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: prom-webhook
+spec:
+  replicas: 1
+  template:
+    serviceAccountName: argo-events-sa
+  dependencies:
+    - name: trigger-slack
+      eventSourceName: prom-webhook
+      eventName: prom-webhook
+      transform:
+        jq: 'if (.body.alerts[0].status == "firing") then .body.emoji = ":exclamation:" else .body.emoji = ":white_check_mark: " end'
+  triggers:
+    - template:
+        name: trigger-slack
+        slack:
+          channel: test-slack-notification
+          message: this is default message from argo-events
+          slackToken:
+            key: token
+            name: test-secret
+      parameters:
+        - src:
+            dependencyName: trigger-slack
+            dataTemplate: |-
+              *Status*: {{ .Input.body.emoji }}{{ (index .Input.body.alerts 0).status }}
+              *Description*: {{ (index .Input.body.alerts 0).annotations.description }}
+              *Summary*: {{ (index .Input.body.alerts 0).annotations.summary }}
+              *Cluster*: {{ (index .Input.body.alerts 0).labels.k8s_cluster_name }}
+          dest: slack.message
+
+---
+kind: Secret
+apiVersion: v1
+metadata:
+  name: test-secret
+data:
+  token: aGVsbG8K

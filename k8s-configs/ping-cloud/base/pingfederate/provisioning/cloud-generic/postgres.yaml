@@ -17,7 +17,7 @@ spec:
       resources:
         requests:
           cpu: 2
-          memory: 2Gi
+          memory: 20Gi
       dataVolumeClaimSpec:
         storageClassName: pgo-gp2
         accessModes:
