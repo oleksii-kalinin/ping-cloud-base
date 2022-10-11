@@ -297,7 +297,7 @@ build_kustomizations_in_dir() {
   for KUSTOMIZATION_FILE in ${KUSTOMIZATION_FILES}; do
     KUSTOMIZATION_DIR=$(dirname ${KUSTOMIZATION_FILE})
 
-    if $(grep "kind: Component" ${KUSTOMIZATION_FILE})
+    if grep "kind: Component" ${KUSTOMIZATION_FILE}
     then
       log "${KUSTOMIZATION_DIR} is a Component. Skipping"
       continue
