@@ -32,7 +32,7 @@ spec:
     - template:
         name: trigger-slack
         slack:
-          channel: test-channel-not-exists
+          channel: test-slack-notification
           message: this is default message from argo-events
           slackToken:
             key: token
@@ -45,8 +45,5 @@ spec:
               *Description*: {{ (index .Input.body.alerts 0).annotations.description }}
               *Summary*: {{ (index .Input.body.alerts 0).annotations.summary }}
               *Cluster*: {{ (index .Input.body.alerts 0).labels.k8s_cluster_name }}
+              *test_label* {{ (index .Input.body.alerts 0).labels.test_label }}
           dest: slack.message
-        - src:
-            dependencyName: trigger-slack
-            dataKey: body.alerts.0.labels.slack_channel
-          dest: slack.channel

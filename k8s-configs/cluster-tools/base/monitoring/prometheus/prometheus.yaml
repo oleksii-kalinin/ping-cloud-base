@@ -19,6 +19,7 @@ data:
       evaluation_interval: 5s
       external_labels:
         k8s_cluster_name: ${CLUSTER_NAME}
+        test_label: test_label
 
     rule_files:
       - /etc/prometheus/alert-rules.d/*.yml
@@ -313,8 +314,8 @@ data:
       - source_labels: [schemaname]
         target_label: schemaname
         replacement: '$1'
-
----
+        
+        ---
 
 apiVersion: apps/v1
 kind: StatefulSet
