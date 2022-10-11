@@ -6,8 +6,8 @@ resources:
 - namespace.yaml
 - grafana.yaml
 - prometheus.yaml
-- grafana-dashboards.yaml
 - prometheus-job-exporter.yaml
+- dashboards
 
 configMapGenerator:
 - name: prometheus-environment-variables
