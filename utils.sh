@@ -297,6 +297,12 @@ build_kustomizations_in_dir() {
   for KUSTOMIZATION_FILE in ${KUSTOMIZATION_FILES}; do
     KUSTOMIZATION_DIR=$(dirname ${KUSTOMIZATION_FILE})
 
+    if $(grep "kind: Component" ${KUSTOMIZATION_FILE})
+    then
+      log "${KUSTOMIZATION_DIR} is a Component. Skipping"
+      continue
+    fi
+
     log "Processing kustomization.yaml in ${KUSTOMIZATION_DIR}"
     set_kustomize_load_arg_and_value
     kustomize build "${build_load_arg}" "${build_load_arg_value}" "${KUSTOMIZATION_DIR}" 1> /dev/null
