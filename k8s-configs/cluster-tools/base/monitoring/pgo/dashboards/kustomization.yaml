@@ -7,7 +7,6 @@ configMapGenerator:
   files:
     - pgbackrest.json
     - pod_details.json
-    - postgres_overview.json
     - postgresql_details.json
     - postgresql_service_health.json
     - prometheus_alerts.json
