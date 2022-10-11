@@ -7,24 +7,6 @@ groups:
 - name: alert-rules
   rules:
 
-  - alert: InstanceDown
-    expr: up == 0
-    for: 1m
-    labels:
-      k8s_cluster_name: ''
-    annotations:
-      summary: "Endpoint {{ $labels.instance }} down"
-      description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minutes."
-
-  - alert: InstanceNotRunning
-    expr: kube_pod_status_phase{phase!="Running", namespace=~"ping-.*", job="kube-state-metrics"} == 1
-    for: 1m
-    labels:
-      k8s_cluster_name: ''
-    annotations:
-      summary: "Pod ${{ $labels.pod }} not running"
-      description: "{{ $labels.pod }} of job {{ $labels.job }} is not in {{ $labels.phase }} state"
-
 ########## EXPORTER RULES ##########
   - alert: PGExporterScrapeError
     expr: pg_exporter_last_scrape_error > 0
@@ -351,25 +333,25 @@ groups:
 #   ccp_backrest_last_incr_time_since_completion_seconds
 #   ccp_backrest_last_diff_time_since_completion_seconds
 #
-#  - alert: PGBackRestLastCompletedFull_main
-#    expr: ccp_backrest_last_full_backup_time_since_completion_seconds{stanza="main"} > 604800
-#    for: 60s
-#    labels:
-#       service: postgresql
-#       severity: critical
-#       severity_num: 300
-#    annotations:
-#       summary: 'Full backup for stanza [main] on system {{ $labels.job }} has not completed in the last week.'
-#
-#  - alert: PGBackRestLastCompletedIncr_main
-#    expr: ccp_backrest_last_incr_backup_time_since_completion_seconds{stanza="main"} > 86400
-#    for: 60s
-#    labels:
-#       service: postgresql
-#       severity: critical
-#       severity_num: 300
-#    annotations:
-#       summary: 'Incremental backup for stanza [main] on system {{ $labels.job }} has not completed in the last 24 hours.'
+  - alert: PGBackRestLastCompletedFull_main
+    expr: ccp_backrest_last_full_backup_time_since_completion_seconds{stanza="main"} > 604800
+    for: 60s
+    labels:
+       service: postgresql
+       severity: critical
+       severity_num: 300
+    annotations:
+       summary: 'Full backup for stanza [main] on system {{ $labels.job }} has not completed in the last week.'
+
+  - alert: PGBackRestLastCompletedIncr_main
+    expr: ccp_backrest_last_incr_backup_time_since_completion_seconds{stanza="main"} > 86400
+    for: 60s
+    labels:
+       service: postgresql
+       severity: critical
+       severity_num: 300
+    annotations:
+       summary: 'Incremental backup for stanza [main] on system {{ $labels.job }} has not completed in the last 24 hours.'
 #
 #
 # Runtime monitoring is handled with a single metric:
@@ -390,15 +372,15 @@ groups:
 #    annotations:
 #       summary: 'Expected runtime of full backup for stanza [main] has exceeded 4 hours'
 #
-#  - alert: PGBackRestLastRuntimeDiff_main
-#    expr: ccp_backrest_last_runtime_backup_runtime_seconds{backup_type="diff", stanza="main"} > 3600
-#    for: 60s
-#    labels:
-#       service: postgresql
-#       severity: critical
-#       severity_num: 300
-#    annotations:
-#       summary: 'Expected runtime of diff backup for stanza [main] has exceeded 1 hour'
+  - alert: PGBackRestLastRuntimeDiff_main
+    expr: ccp_backrest_last_runtime_backup_runtime_seconds{backup_type="diff", stanza="main"} > 3600
+    for: 60s
+    labels:
+       service: postgresql
+       severity: critical
+       severity_num: 300
+    annotations:
+       summary: 'Expected runtime of diff backup for stanza [main] has exceeded 1 hour'
 ##
 #
 ## If the pgbackrest command fails to run, the metric disappears from the exporter output and the alert never fires.
@@ -407,12 +389,12 @@ groups:
 ## Note that while the backrest check command failing will likely also cause a scrape error alert, the addition of this
 ## check gives a clearer answer as to what is causing it and that something is wrong with the backups.
 #
-#  - alert: PGBackrestAbsentFull_Prod
-#    expr: absent(ccp_backrest_last_full_backup_time_since_completion_seconds{job="Prod"})
-#    for: 10s
-#    labels:
-#      service: postgresql
-#      severity: critical
-#      severity_num: 300
-#    annotations:
-#      description: 'Backup Full status missing for Prod. Check that pgbackrest info command is working on target system.'
+  - alert: PGBackrestAbsentFull_Prod
+    expr: absent(ccp_backrest_last_full_backup_time_since_completion_seconds{job="Prod"})
+    for: 10s
+    labels:
+      service: postgresql
+      severity: critical
+      severity_num: 300
+    annotations:
+      description: 'Backup Full status missing for Prod. Check that pgbackrest info command is working on target system.'
