@@ -6,7 +6,9 @@ configMapGenerator:
   namespace: prometheus
   files:
     - pgbackrest.json
+    - crud_details.json
     - pod_details.json
+    - pod_details2.json
     - postgresql_details.json
     - postgresql_service_health.json
     - prometheus_alerts.json
