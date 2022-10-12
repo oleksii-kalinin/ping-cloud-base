@@ -38,7 +38,7 @@ spec:
     - template:
         name: trigger-slack
         slack:
-          channel: test-channel-not-exists
+          channel: p1as-application-oncall # Can be overridden by setting PROMETHEUS_SLACK_CHANNEL in env_vars
           message: this is default message from argo-events
           slackToken:
             key: token
