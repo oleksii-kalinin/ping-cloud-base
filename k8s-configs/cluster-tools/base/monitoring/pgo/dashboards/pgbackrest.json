@@ -1,40 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "7.4.5"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -51,8 +15,7 @@
   "editable": false,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1624546649377,
+  "iteration": 1634925357078,
   "links": [
     {
       "asDropdown": false,
@@ -65,23 +28,26 @@
       "title": "",
       "type": "dashboards"
     }
-  ],
-  "panels": [
+  ]  "panels": [
     {
-      "datasource": "prometheus",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "blue",
+            "mode": "fixed"
           },
-          "custom": {},
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-blue",
+                "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -95,17 +61,17 @@
         "x": 0,
         "y": 0
       },
-      "id": 8,
+      "id": 11,
       "options": {
         "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "auto",
+        "graphMode": "none",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "last"
+            "lastNotNull"
           ],
-          "fields": "/^Value$/",
+          "fields": "",
           "values": false
         },
         "text": {
@@ -113,14 +79,13 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.5",
+      "pluginVersion": "7.5.11",
       "targets": [
         {
-          "expr": "time()-ccp_backrest_oldest_full_backup_time_seconds{pg_cluster=\"[[cluster]]\", role=\"master\"}",
-          "format": "table",
-          "instant": true,
+          "exemplar": true,
+          "expr": "time()- ccp_backrest_oldest_full_backup_time_seconds{stanza=\"[[backrest_stanza]]\", repo=\"[[backrest_repo]]\"} + on(job,instance) group_left() (ccp_is_in_recovery_status == 2)",
           "interval": "",
-          "legendFormat": "Recovery window",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -128,21 +93,13 @@
       "type": "stat"
     },
     {
-      "aliasColors": {
-        "Differential": "dark-blue",
-        "Differential Backup": "dark-blue",
-        "Full": "dark-green",
-        "Full Backup": "dark-green",
-        "Incremental": "light-blue",
-        "Incremental Backup": "light-blue"
-      },
+      "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -150,7 +107,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 12,
         "x": 0,
         "y": 3
@@ -158,14 +115,12 @@
       "hiddenSeries": false,
       "id": 2,
       "legend": {
-        "alignAsTable": true,
         "avg": false,
         "current": false,
         "max": false,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 150,
         "total": false,
         "values": false
       },
@@ -174,10 +129,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": false
+        "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -187,41 +142,40 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "min(ccp_backrest_last_incr_backup_time_since_completion_seconds{pg_cluster=\"[[cluster]]\", role=\"master\"}) without(deployment,instance,ip,pod)",
+          "exemplar": true,
+          "expr": "ccp_backrest_last_incr_backup_time_since_completion_seconds{stanza=\"[[backrest_stanza]]\", repo=\"[[backrest_repo]]\"} + on(job,instance) group_left() (ccp_is_in_recovery_status == 2)",
           "format": "time_series",
-          "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Incremental Backup",
+          "legendFormat": "incr",
           "refId": "A"
         },
         {
-          "expr": "min(ccp_backrest_last_diff_backup_time_since_completion_seconds{pg_cluster=\"[[cluster]]\", role=\"master\"}) without(deployment, instance,ip,pod)",
+          "exemplar": true,
+          "expr": "ccp_backrest_last_diff_backup_time_since_completion_seconds{stanza=\"[[backrest_stanza]]\", repo=\"[[backrest_repo]]\"} + on(job,instance) group_left() (ccp_is_in_recovery_status == 2)",
+          "format": "time_series",
           "hide": false,
           "interval": "",
-          "legendFormat": "Differential Backup",
+          "intervalFactor": 1,
+          "legendFormat": "diff",
           "refId": "B"
         },
         {
-          "expr": "min(ccp_backrest_last_full_backup_time_since_completion_seconds{pg_cluster=\"[[cluster]]\", role=\"master\"}) without(deployment, instance,ip,pod)",
+          "exemplar": true,
+          "expr": "ccp_backrest_last_full_backup_time_since_completion_seconds{stanza=\"[[backrest_stanza]]\", repo=\"[[backrest_repo]]\"} + on(job,instance) group_left() (ccp_is_in_recovery_status == 2)",
+          "format": "time_series",
           "hide": false,
           "interval": "",
-          "legendFormat": "Full Backup",
+          "intervalFactor": 1,
+          "legendFormat": "full",
           "refId": "C"
-        },
-        {
-          "expr": "min(ccp_archive_command_status_seconds_since_last_archive{pg_cluster=\"[[cluster]]\", role=\"master\"}) without(deployment, instance,ip,pod)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "WAL Archive",
-          "refId": "D"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Time Since",
+      "title": "Time Since Last Completed Backup",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -237,6 +191,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:96",
           "format": "s",
           "label": null,
           "logBase": 1,
@@ -245,12 +200,13 @@
           "show": true
         },
         {
+          "$$hashKey": "object:97",
           "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
@@ -259,18 +215,13 @@
       }
     },
     {
-      "aliasColors": {
-        "Differential": "dark-blue",
-        "Full": "dark-green",
-        "Incremental": "light-blue"
-      },
+      "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -278,7 +229,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 12,
         "x": 12,
         "y": 3
@@ -286,16 +237,12 @@
       "hiddenSeries": false,
       "id": 4,
       "legend": {
-        "alignAsTable": true,
         "avg": false,
         "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
         "max": false,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 150,
         "total": false,
         "values": false
       },
@@ -307,7 +254,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.5",
+      "pluginVersion": "7.5.11",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -317,34 +264,20 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "min(ccp_backrest_last_info_backup_runtime_seconds{pg_cluster=\"[[cluster]]\", role=\"master\", backup_type=\"incr\"}) without (deployment,instance,pod,ip)",
+          "exemplar": true,
+          "expr": "ccp_backrest_last_info_backup_runtime_seconds{stanza=\"[[backrest_stanza]]\", repo=\"[[backrest_repo]]\"} + on(job,instance) group_left() (ccp_is_in_recovery_status == 2)",
           "format": "time_series",
-          "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Incremental",
+          "legendFormat": "{{backup_type}}",
           "refId": "A"
-        },
-        {
-          "expr": "min(ccp_backrest_last_info_backup_runtime_seconds{pg_cluster=\"[[cluster]]\", role=\"master\", backup_type=\"diff\"}) without (deployment,instance,pod,ip)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Differential",
-          "refId": "B"
-        },
-        {
-          "expr": "min(ccp_backrest_last_info_backup_runtime_seconds{pg_cluster=\"[[cluster]]\", role=\"master\", backup_type=\"full\"}) without (deployment,instance,pod,ip)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Full",
-          "refId": "C"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Backup Runtimes",
+      "title": "Last Backup Runtime",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -360,6 +293,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:197",
           "format": "s",
           "label": null,
           "logBase": 1,
@@ -368,12 +302,13 @@
           "show": true
         },
         {
+          "$$hashKey": "object:198",
           "format": "short",
           "label": null,
-          "logBase": 2,
+          "logBase": 1,
           "max": null,
           "min": null,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
@@ -382,19 +317,13 @@
       }
     },
     {
-      "aliasColors": {
-        "Differential": "dark-blue",
-        "Full": "dark-green",
-        "Incremental": "light-blue"
-      },
+      "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
-      "description": "",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -402,24 +331,20 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 12,
         "x": 0,
-        "y": 10
+        "y": 11
       },
       "hiddenSeries": false,
-      "id": 5,
+      "id": 8,
       "legend": {
-        "alignAsTable": true,
         "avg": false,
         "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
         "max": false,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 150,
         "total": false,
         "values": false
       },
@@ -431,8 +356,8 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.5",
-      "pointradius": 5,
+      "pluginVersion": "7.5.11",
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -441,34 +366,20 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "min(ccp_backrest_last_info_repo_backup_size_bytes{pg_cluster=\"[[cluster]]\", role=\"master\", backup_type=\"incr\"}) without (deployment, instance,pod,ip)",
+          "exemplar": true,
+          "expr": "ccp_backrest_last_info_repo_total_size_bytes{stanza=\"[[backrest_stanza]]\", repo=\"[[backrest_repo]]\"} + on(job,instance) group_left() (ccp_is_in_recovery_status == 2)",
           "format": "time_series",
-          "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Incremental",
+          "legendFormat": "{{backup_type}}",
           "refId": "A"
-        },
-        {
-          "expr": "min(ccp_backrest_last_info_repo_backup_size_bytes{pg_cluster=\"[[cluster]]\", role=\"master\", backup_type=\"diff\"}) without (deployment,instance,pod,ip)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Differential",
-          "refId": "B"
-        },
-        {
-          "expr": "min(ccp_backrest_last_info_repo_backup_size_bytes{pg_cluster=\"[[cluster]]\", role=\"master\", backup_type=\"full\"}) without (deployment,instance,pod,ip)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Full",
-          "refId": "C"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Backup Size",
+      "title": "Last Backup Size (Total)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -484,6 +395,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:353",
           "format": "bytes",
           "label": null,
           "logBase": 1,
@@ -492,12 +404,13 @@
           "show": true
         },
         {
+          "$$hashKey": "object:354",
           "format": "short",
           "label": null,
-          "logBase": 2,
+          "logBase": 1,
           "max": null,
           "min": null,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
@@ -506,47 +419,34 @@
       }
     },
     {
-      "aliasColors": {
-        "Archive age": "blue",
-        "Archive count": "green",
-        "Differential": "dark-blue",
-        "Failed count": "red",
-        "Full": "dark-green",
-        "Incremental": "light-blue"
-      },
+      "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
-      "description": "",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
       },
-      "fill": 3,
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 12,
         "x": 12,
-        "y": 10
+        "y": 11
       },
       "hiddenSeries": false,
-      "id": 6,
+      "id": 9,
       "legend": {
-        "alignAsTable": true,
         "avg": false,
         "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
         "max": false,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 150,
         "total": false,
         "values": false
       },
@@ -558,8 +458,8 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.5",
-      "pointradius": 5,
+      "pluginVersion": "7.5.11",
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -568,27 +468,20 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg(idelta(ccp_archive_command_status_failed_count{pg_cluster=\"[[cluster]]\", role=\"master\"}[1m])) without (instance,ip)",
+          "exemplar": true,
+          "expr": "ccp_backrest_last_info_repo_backup_size_bytes{stanza=\"[[backrest_stanza]]\", repo=\"[[backrest_repo]]\"} + on(job,instance) group_left() (ccp_is_in_recovery_status == 2)",
           "format": "time_series",
-          "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Failed count",
+          "legendFormat": "{{backup_type}}",
           "refId": "A"
-        },
-        {
-          "expr": "avg(idelta(ccp_archive_command_status_archived_count{pg_cluster=\"[[cluster]]\", role=\"master\"}[1m])) without (instance,pod, ip)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Archive count",
-          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "WAL Stats",
+      "title": "Last Backup Size (Actual)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -604,20 +497,22 @@
       },
       "yaxes": [
         {
-          "format": "short",
-          "label": "",
+          "$$hashKey": "object:438",
+          "format": "bytes",
+          "label": null,
           "logBase": 1,
           "max": null,
-          "min": "0",
+          "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:439",
           "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": "0",
-          "show": false
+          "min": null,
+          "show": true
         }
       ],
       "yaxis": {
@@ -626,30 +521,63 @@
       }
     }
   ],
-  "refresh": "5m",
+  "refresh": "15m",
   "schemaVersion": 27,
   "style": "dark",
-  "tags": [
-    "vendor=crunchydata"
-  ],
+  "tags": [],
   "templating": {
     "list": [
       {
         "allValue": null,
-        "current": {},
-        "datasource": "prometheus",
-        "definition": "label_values(pg_cluster)",
+        "current": {
+          "selected": false,
+          "text": "echo",
+          "value": "echo"
+        },
+        "datasource": "PROMETHEUS",
+        "definition": "label_values(ccp_backrest_last_info_backup_runtime_seconds{}, stanza)",
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "cluster",
+        "label": "Stanza",
         "multi": false,
-        "name": "cluster",
+        "name": "backrest_stanza",
         "options": [],
         "query": {
-          "query": "label_values(pg_cluster)",
-          "refId": "prometheus-cluster-Variable-Query"
+          "query": "label_values(ccp_backrest_last_info_backup_runtime_seconds{}, stanza)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "1",
+          "value": "1"
+        },
+        "datasource": "PROMETHEUS",
+        "definition": "label_values(ccp_backrest_last_info_backup_runtime_seconds{stanza=\"[[backrest_stanza]]\"}, repo)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Repo",
+        "multi": false,
+        "name": "backrest_repo",
+        "options": [],
+        "query": {
+          "query": "label_values(ccp_backrest_last_info_backup_runtime_seconds{stanza=\"[[backrest_stanza]]\"}, repo)",
+          "refId": "StandardVariableQuery"
         },
         "refresh": 1,
         "regex": "",
@@ -664,7 +592,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {
@@ -680,8 +608,8 @@
       "30d"
     ]
   },
-  "timezone": "browser",
+  "timezone": "",
   "title": "pgBackRest",
-  "uid": "2fcFZ6PGk",
+  "uid": "QtHwNCrik",
   "version": 1
 }
