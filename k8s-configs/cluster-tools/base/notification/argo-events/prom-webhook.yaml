@@ -19,7 +19,7 @@ kind: Sensor
 metadata:
   name: prom-webhook
 spec:
-  replicas: 1
+  replicas: 2
   template:
     serviceAccountName: argo-events-sa
   dependencies:
