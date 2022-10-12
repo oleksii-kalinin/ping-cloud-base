@@ -20,7 +20,7 @@ data:
       external_labels:
         k8s_cluster_name: ${CLUSTER_STATE_REPO_BRANCH}-${TENANT_NAME}-${REGION_NICK_NAME}
         slack_channel: ${PROMETHEUS_SLACK_CHANNEL}
-        enable_notifications: ${PROMETHEUS_NOTIFICATION_ENABLED}
+        notifications_enabled: ${PROMETHEUS_NOTIFICATION_ENABLED}
 
     alerting:
       alertmanagers:

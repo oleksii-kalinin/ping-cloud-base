@@ -30,7 +30,7 @@ spec:
         jq: 'if (.body.alerts[0].status == "firing") then .body.emoji = ":exclamation:" else .body.emoji = ":white_check_mark: " end'
       filters:
         data:
-          - path: body.alerts.0.labels.enable_notifications
+          - path: body.alerts.0.labels.notifications_enabled
             type: string
             value:
               - "true"
