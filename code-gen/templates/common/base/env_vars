@@ -243,7 +243,7 @@ SLACK_CHANNEL=p1as-application-oncall
 NOTIFICATION_ENDPOINT=http://webhook-eventsource-svc.argo-events:12999/notification
 
 # Prometheus argo-events notification configuration
-PROMETHEUS_NOTIFICATION_ENABLED=true
+PROMETHEUS_NOTIFICATION_ENABLED=false
 PROMETHEUS_SLACK_CHANNEL=p1as-application-oncall
 
 # Variables used by argocd-image-updater to automatically update the container images managed by ArgoCD
