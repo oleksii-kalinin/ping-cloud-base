@@ -199,7 +199,7 @@ configMapGenerator:
 - name: prometheus-environment-variables
   behavior: merge
   envs:
-    - ../../env_vars
+    - ../base/env_vars
     - env_vars
 
 patchesStrategicMerge:
