@@ -19,10 +19,9 @@ data:
       evaluation_interval: 5s
       external_labels:
         k8s_cluster_name: ${CLUSTER_STATE_REPO_BRANCH}-${TENANT_NAME}-${REGION_NICK_NAME}
-        slack_channel: ${SLACK_CHANNEL}
+        slack_channel: ${PROMETHEUS_SLACK_CHANNEL}
+        enable_notifications: ${PROMETHEUS_NOTIFICATION_ENABLED}
 
-    rule_files:
-      - /etc/prometheus/alert-rules.d/*.yml
     alerting:
       alertmanagers:
         - scheme: http

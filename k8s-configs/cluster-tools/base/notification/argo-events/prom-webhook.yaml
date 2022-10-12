@@ -28,6 +28,12 @@ spec:
       eventName: prom-webhook
       transform:
         jq: 'if (.body.alerts[0].status == "firing") then .body.emoji = ":exclamation:" else .body.emoji = ":white_check_mark: " end'
+      filters:
+        data:
+          - path: body.alerts.0.labels.enable_notifications
+            type: string
+            value:
+              - "true"
   triggers:
     - template:
         name: trigger-slack
