@@ -240,3 +240,7 @@ PF_PROVISIONING_ENABLED=${PF_PROVISIONING_ENABLED}
 NOTIFICATION_ENABLED=false
 SLACK_CHANNEL=p1as-application-oncall
 NOTIFICATION_ENDPOINT=http://webhook-eventsource-svc.argo-events:12999/notification
+
+# Prometheus argo-events notification configuration
+PROMETHEUS_NOTIFICATION_ENABLED=true
+PROMETHEUS_SLACK_CHANNEL=p1as-application-oncall
