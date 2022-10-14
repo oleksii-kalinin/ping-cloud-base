@@ -14,5 +14,4 @@ configMapGenerator:
   envs:
     - env_vars
 
-
-
+- name: prom-alerts

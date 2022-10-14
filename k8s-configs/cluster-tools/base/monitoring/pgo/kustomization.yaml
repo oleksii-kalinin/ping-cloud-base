@@ -10,6 +10,7 @@ generatorOptions:
 configMapGenerator:
   - name: prom-alerts
     namespace: prometheus
+    behavior: merge
     files:
       - pgo-prom-alerts.yml
 
