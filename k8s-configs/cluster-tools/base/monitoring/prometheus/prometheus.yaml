@@ -329,6 +329,9 @@ spec:
             mountPath: /etc/prometheus/
           - name: prometheus-storage-volume
             mountPath: /prometheus/data
+          - name: alertsconfig
+            mountPath: /etc/prometheus/alert-rules.d
+
         ports:
         - containerPort: 9090
         resources:
@@ -342,6 +345,9 @@ spec:
       - name: prometheus-config-volume
         configMap:
           name: prometheus-config
+      - name: alertsconfig
+        configMap:
+          name: prom-alerts
 
   volumeClaimTemplates:
   - metadata:
