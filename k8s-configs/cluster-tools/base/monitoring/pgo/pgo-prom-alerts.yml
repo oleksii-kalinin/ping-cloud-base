@@ -4,7 +4,7 @@
 #
 ###
 groups:
-- name: alert-rules
+- name: pgo-alert-rules
   rules:
 
 ########## EXPORTER RULES ##########

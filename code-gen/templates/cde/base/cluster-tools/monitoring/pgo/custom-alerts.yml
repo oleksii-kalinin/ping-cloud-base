@@ -1,7 +1,7 @@
 ### This file can be used to add custom prometheus alerts for PGO.
 ### It will be deployed only if PF_PROVISIONING_ENABLED=true
 groups:
-- name: alert-rules
+- name: custom-pgo-rules
   rules:
     # TODO: should be customized for each customer
     # Threshold should be changed.
