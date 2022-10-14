@@ -1,0 +1,19 @@
+### This file can be used to add custom prometheus alerts for PGO.
+### It will be deployed only if PF_PROVISIONING_ENABLED=true
+groups:
+- name: alert-rules
+  rules:
+    # TODO: should be customized for each customer
+    # Threshold should be changed.
+    # By default alert triggers if TPS for any database will be more than threshold. If you need to have an alert only for selected database,
+    # please change the rule to the following
+    # expr: sum(irate(ccp_stat_database_xact_commit{dbname="$DBNAME"}[1m])) + sum(irate(ccp_stat_database_xact_rollback{dbname="$DBNAME"}[1m]))
+    # where $DBNAME is a name of needed database
+    - alert:
+      expr: sum(irate(ccp_stat_database_xact_commit[1m])) by (dbname) + sum(irate(ccp_stat_database_xact_rollback[1m])) by (dbname) > 100
+      for: 60s
+      labels:
+        service: postgresql
+      annotations:
+        summary: "TPS is too high for {{ $labels.dbname }} in {{ $labels.cluster }}"
+        description: "Too many Transactions Per Second has been registered for database {{ $labels.dbname }} in cluster {{ $labels.cluster }}"
