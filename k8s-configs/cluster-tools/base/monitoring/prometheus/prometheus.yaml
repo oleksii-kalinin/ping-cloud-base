@@ -31,9 +31,6 @@ data:
     rule_files:
       - /etc/prometheus/alert-rules.d/*.yml
 
-    rule_files:
-      - /etc/prometheus/alert-rules.d/*.yml
-
     scrape_configs:
     # Monitor prometheus itself
     - job_name: 'prometheus'
