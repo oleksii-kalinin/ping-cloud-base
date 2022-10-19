@@ -15,9 +15,6 @@ data:
       routes:
         - receiver: alert-webhook
           continue: true
-        # Send severity=critical alerts to webhook.
-          match:
-            severity: critical
           group_wait: 10s
           repeat_interval: 1m
  
