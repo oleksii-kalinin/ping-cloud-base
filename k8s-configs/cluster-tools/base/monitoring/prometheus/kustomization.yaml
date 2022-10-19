@@ -16,3 +16,5 @@ configMapGenerator:
     - env_vars
 
 - name: prom-alerts
+  files:
+   - default-rule.yml
