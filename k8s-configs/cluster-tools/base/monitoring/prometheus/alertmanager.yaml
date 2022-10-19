@@ -24,7 +24,7 @@ data:
     receivers:
     - name: alert-webhook
       webhook_configs:
-      - url: http://prom-webhook-eventsource-svc.argo-events:13000/notification
+      - url: http://webhook-eventsource-svc.argo-events:13000/notification
         send_resolved: true
 ---
 apiVersion: apps/v1
@@ -32,6 +32,8 @@ kind: Deployment
 metadata:
   name: alertmanager
   namespace: prometheus
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
 spec:
   replicas: 1
   selector:

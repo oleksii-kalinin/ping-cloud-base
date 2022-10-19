@@ -377,4 +377,16 @@ groups:
       severity: critical
       severity_num: 300
     annotations:
+      summary: Full backup missing
       description: 'Backup Full status missing for pf-provisioning. Check that pgbackrest info command is working on target system.'
+
+## This is a test Prometheus alerting rule.
+## For testing purpose uncoment alert, delete pingdirectory/pingfederate/pingacess pod and wait for alert.
+#  - alert: PrometheusTargetMissing
+#    expr: up == 0
+#    for: 0m
+#    labels:
+#      severity: critical
+#    annotations:
+#      summary: Prometheus target missing (instance {{ $labels.instance }})
+#      description: "A Prometheus target has disappeared. An exporter might be crashed.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
