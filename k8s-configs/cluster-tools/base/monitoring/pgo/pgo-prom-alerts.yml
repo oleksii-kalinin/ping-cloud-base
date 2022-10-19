@@ -381,7 +381,7 @@ groups:
       description: 'Backup Full status missing for pf-provisioning. Check that pgbackrest info command is working on target system.'
 
 ## This is a test Prometheus alerting rule.
-## For testing purpose uncoment alert, delete pingdirectory/pingfederate/pingacess pod and wait for alert.
+## For testing purpose uncoment alert, deploy changes, delete pingdirectory/pingfederate/pingacess pod and wait for alert.
 #  - alert: PrometheusTargetMissing
 #    expr: up == 0
 #    for: 0m
