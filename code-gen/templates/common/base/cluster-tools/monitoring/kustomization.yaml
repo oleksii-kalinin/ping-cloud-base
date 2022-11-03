@@ -224,13 +224,3 @@ patchesJson6902:
     - op: replace
       path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname
       value: prometheus-central.${DNS_ZONE}
-
-- target:
-    kind: Service
-    name: elasticsearch
-    namespace: elastic-stack-logging
-    version: v1
-  patch: |-
-    - op: replace
-      path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname
-      value: elasticsearch.${DNS_ZONE}
