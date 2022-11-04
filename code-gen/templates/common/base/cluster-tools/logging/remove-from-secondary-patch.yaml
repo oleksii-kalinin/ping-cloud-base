@@ -60,7 +60,7 @@ $patch: delete
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: enrichment-bootstrap
+  name: elasticsearch-bootstrap
   namespace: elastic-stack-logging
 $patch: delete
 ---
