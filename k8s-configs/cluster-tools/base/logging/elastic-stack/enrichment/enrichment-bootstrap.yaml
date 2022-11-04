@@ -56,13 +56,11 @@ spec:
         imagePullPolicy: Always
         workingDir: /scripts
         command: ["sh", '$(CONTAINER_NAME).sh']
-
         securityContext:
           runAsNonRoot: true
           runAsUser: 1000
           runAsGroup: 1000
           allowPrivilegeEscalation: false
-
         env:
         - name: CONTAINER_NAME
           value: "elasticsearch-bootstrap"
@@ -75,14 +73,21 @@ spec:
           value: "9200"
         - name: DESIRED_STATUS
           value: "green"
-
         volumeMounts:
-        - name: enrichment-elasticsearch-ilm-policies
-          mountPath: /usr/share/elasticsearch/data/ilm-policies
-        - name: enrichment-elasticsearch-index-bootstraps
-          mountPath: /usr/share/elasticsearch/data/index-bootstraps
-        - name: enrichment-elasticsearch-index-templates
-          mountPath: /usr/share/elasticsearch/data/index-templates
+          - name: enrichment-elasticsearch-ilm-policies
+            mountPath: /usr/share/elasticsearch/data/ilm-policies
+          - name: enrichment-elasticsearch-index-bootstraps
+            mountPath: /usr/share/elasticsearch/data/index-bootstraps
+          - name: enrichment-elasticsearch-index-templates
+            mountPath: /usr/share/elasticsearch/data/index-templates
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "300m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      restartPolicy: OnFailure
       volumes:
         - name: enrichment-elasticsearch-ilm-policies
           configMap:
@@ -121,7 +126,6 @@ spec:
               value: "http://elasticsearch:9200/_cluster/health"
             - name: RETRY_KIBANA_BOOTSTRAP_SEC
               value: "30"
-
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000
@@ -147,6 +151,14 @@ spec:
               mountPath: /scripts/index-templates
             - name: kibana-alerts
               mountPath: /scripts/alerts
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "300m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+      restartPolicy: OnFailure
       volumes:
         - name: kibana-dashboard-pa
           configMap:
