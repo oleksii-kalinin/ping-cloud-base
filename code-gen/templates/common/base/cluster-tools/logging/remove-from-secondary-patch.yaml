@@ -70,3 +70,80 @@ metadata:
   name: kibana-bootstrap
   namespace: elastic-stack-logging
 $patch: delete
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: enrichment-elasticsearch-ilm-policies
+  namespace: elastic-stack-logging
+$patch: delete
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: enrichment-elasticsearch-ilm-policies
+  namespace: elastic-stack-logging
+$patch: delete
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: enrichment-elasticsearch-index-bootstraps
+  namespace: elastic-stack-logging
+$patch: delete
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: enrichment-elasticsearch-index-templates
+  namespace: elastic-stack-logging
+$patch: delete
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-dashboard-pa
+  namespace: elastic-stack-logging
+$patch: delete
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-dashboard-pf
+  namespace: elastic-stack-logging
+$patch: delete
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-dashboard-pd
+  namespace: elastic-stack-logging
+$patch: delete
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-dashboard-pf-basic
+  namespace: elastic-stack-logging
+$patch: delete
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-dashboard-pa-was-basic
+  namespace: elastic-stack-logging
+$patch: delete
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-admin-index-patterns
+  namespace: elastic-stack-logging
+$patch: delete
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-alerts
+  namespace: elastic-stack-logging
+$patch: delete
