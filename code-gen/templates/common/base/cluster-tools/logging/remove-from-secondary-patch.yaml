@@ -81,13 +81,6 @@ $patch: delete
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: enrichment-elasticsearch-ilm-policies
-  namespace: elastic-stack-logging
-$patch: delete
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
   name: enrichment-elasticsearch-index-bootstraps
   namespace: elastic-stack-logging
 $patch: delete
