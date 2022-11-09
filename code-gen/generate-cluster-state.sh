@@ -867,8 +867,8 @@ for ENV_OR_BRANCH in ${ENVIRONMENTS}; do
   export LETS_ENCRYPT_SERVER="${LETS_ENCRYPT_SERVER}"
 
   export USER_BASE_DN="${USER_BASE_DN:-dc=example,dc=com}"
-  export SLACK_CHANNEL="${SLACK_CHANNEL:-dc=example,dc=com}"
-  export PROM_SLACK_CHANNEL="${PROM_SLACK_CHANNEL:-dc=example,dc=com}"
+  export SLACK_CHANNEL="${SLACK_CHANNEL:-p1as-application-oncall}"
+  export PROM_SLACK_CHANNEL="${PROM_SLACK_CHANNEL:-p1as-application-oncall}"
 
   # Set PF variables based on ENV
   if echo "${LETS_ENCRYPT_SERVER}" | grep -q 'staging'; then
