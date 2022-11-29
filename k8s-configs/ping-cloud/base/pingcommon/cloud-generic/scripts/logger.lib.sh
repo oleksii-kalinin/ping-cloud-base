@@ -15,7 +15,7 @@ DBG_LVL=4
 #   $1 -> The log message.
 #   $2 -> Optional log level. Default is INFO.
 ########################################################################################################################
-function beluga_log() {
+beluga_log() {
   VERBOSITY=$(echo "${VERBOSITY}" | tr '[:upper:]' '[:lower:]')
   case ${VERBOSITY} in
     [1-4]) ;;
