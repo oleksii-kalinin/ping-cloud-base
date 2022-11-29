@@ -16,7 +16,7 @@ DBG_LVL=4
 #   $2 -> Optional log level. Default is INFO.
 ########################################################################################################################
 function beluga_log() {
-  VERBOSITY=$(echo "${VERBOSITY}" | tr '[:upper:]' '[:lower:]' )
+  VERBOSITY=$(echo "${VERBOSITY}" | tr '[:upper:]' '[:lower:]')
   case ${VERBOSITY} in
     [1-4]) ;;
     debug) VERBOSITY=4 ;;
