@@ -16,7 +16,7 @@ metadata:
 data:
   cluster.name: cluster_name
   logs.region: region_name
-  log.level: "info"
+  log.level: "error"
   read.head: "True"
   read.tail: "Off"
   newrelic_cluster_name: cluster_name
