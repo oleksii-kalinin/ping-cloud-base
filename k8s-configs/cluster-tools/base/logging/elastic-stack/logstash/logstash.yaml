@@ -116,6 +116,8 @@ spec:
               value: persisted
             - name: QUEUE_MAX_BYTES
               value: 1000gb
+            - name: LOG_LEVEL
+              value: error
           envFrom:
             - configMapRef:
                 name: elk-environment-variables
