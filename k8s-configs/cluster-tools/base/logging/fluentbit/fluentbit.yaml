@@ -737,7 +737,9 @@ data:
         flush_timeout 1000
 
         rule "start_state" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?) ([0-9\-:T, ]+) (INFO) (.*)/" "cont"
-        rule "cont" "(?:\/.*\/log[s]?\/\w+(?:\.log)?)\n" "cont"
+        rule "cont" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?)\n/" "cont"
+        rule "cont" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?) \w+/" "cont"
+        rule "cont" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?) \W+\s/" "cont"
 
   outputs.conf: |
     [OUTPUT]
