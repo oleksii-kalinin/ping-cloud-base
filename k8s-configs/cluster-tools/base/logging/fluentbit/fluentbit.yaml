@@ -734,10 +734,10 @@ data:
         type regex
         parser json
         key_content log
+        flush_timeout 1000
 
         rule "start_state" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?) ([0-9\-:T, ]+) (INFO) (.*)/" "cont"
         rule "cont" "(?:\/.*\/log[s]?\/\w+(?:\.log)?)\n" "cont"
-        rule "cont" "(?:\/.*\/log[s]?\/\w+(?:\.log)?).*" "cont"
 
   outputs.conf: |
     [OUTPUT]
