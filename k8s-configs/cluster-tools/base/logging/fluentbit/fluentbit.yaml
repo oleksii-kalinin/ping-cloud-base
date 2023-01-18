@@ -736,10 +736,11 @@ data:
         key_content log
         flush_timeout 1000
 
-        rule "start_state" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?) ([0-9\-:T, ]+) (INFO) (.*)/" "cont"
-        rule "cont" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?)\n/" "cont"
-        rule "cont" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?) \w+/" "cont"
-        rule "cont" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?) \W+\s/" "cont"
+        rule "start_state" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?) ([0-9\-:T, ]+) (INFO) (.*)/" "empty_line"
+        rule "empty_line" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?)\n/" "header"
+        rule "header" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?) [a-zA-Z]/" "dashes"
+        rule "dashes" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?) -+/" "cont"
+        rule "cont" "/(?:\/.*\/log[s]?\/\w+(?:\.log)?) (.*)/" "cont"
 
   outputs.conf: |
     [OUTPUT]
