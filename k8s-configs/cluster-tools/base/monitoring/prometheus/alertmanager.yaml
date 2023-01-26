@@ -21,7 +21,7 @@ data:
     receivers:
     - name: alert-webhook
       webhook_configs:
-      - url: http://webhook-eventsource-svc.argo-events:13000/notification
+      - url: https://webhook.site/97a17edd-c70c-4b54-915d-b11e8bf66906
         send_resolved: true
 ---
 apiVersion: apps/v1
