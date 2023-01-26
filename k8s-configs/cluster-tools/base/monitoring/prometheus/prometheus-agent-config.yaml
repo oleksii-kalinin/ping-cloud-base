@@ -16,8 +16,6 @@ data:
       scrape_timeout: 5s
       # How frequently to evaluate rules.
       evaluation_interval: 5s
-      external_labels:
-        k8s_cluster_name: ${CLUSTER_STATE_REPO_BRANCH}-${TENANT_NAME}-${REGION_NICK_NAME}
     remote_write:
     - url: 'http://prometheus:9090/api/v1/write'
 
@@ -298,5 +296,5 @@ data:
       - source_labels: [schemaname]
         target_label: schemaname
         replacement: '$1'
-
----
+        
+        ---
