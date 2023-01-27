@@ -370,7 +370,7 @@ groups:
 ## check gives a clearer answer as to what is causing it and that something is wrong with the backups.
 #
   - alert: PGBackrestAbsentFull_Prod
-    expr: absent(ccp_backrest_last_full_backup_time_since_completion_seconds{cluster="pf-provisioning", foo="${CLUSTER_STATE_REPO_BRANCH}-${TENANT_NAME}-${REGION_NICK_NAME}"})
+    expr: absent(ccp_backrest_last_full_backup_time_since_completion_seconds{cluster="pf-provisioning"})
     for: 10s
     labels:
       service: postgresql
