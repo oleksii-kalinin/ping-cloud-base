@@ -176,6 +176,12 @@ data:
         Match               ping.*
         Rule                $log ^.+$ app.$stream_name true
     
+    # PF transaction ELK only logs
+    [FILTER]
+        Name                rewrite_tag
+        Match               ping.*transaction_logs*
+        Rule                $log ^.+$ $stream_name.elk_out false
+    
     # Ping-cloud healthcheck
     [FILTER]
         Name                rewrite_tag
