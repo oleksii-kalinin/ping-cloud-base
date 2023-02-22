@@ -16,7 +16,7 @@ spec:
               memory: 3Gi
           env:
             - name: LS_JAVA_OPTS
-              value: '-Xms4g -Xmx4g'
+              value: '-Xms3500m -Xmx3500m'
             - name: PIPELINE_WORKERS
               value: "2"
             - name: QUEUE_MAX_BYTES

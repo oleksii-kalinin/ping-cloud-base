@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: logstash-elastic
+  namespace: elastic-stack-logging
 spec:
   template:
     spec:
@@ -16,8 +17,8 @@ spec:
               memory: 1Gi
           env:
             - name: LS_JAVA_OPTS
-              value: '-Xms2g -Xmx2g'
+              value: '-Xms1500m -Xmx1500m'
             - name: PIPELINE_WORKERS
               value: "1"
             - name: QUEUE_MAX_BYTES
-              value: 100gb
+              value: 1000gb

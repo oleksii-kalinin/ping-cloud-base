@@ -16,7 +16,7 @@ spec:
               memory: 2Gi
           env:
             - name: LS_JAVA_OPTS
-              value: '-Xms3g -Xmx3g'
+              value: '-Xms2500m -Xmx2500m'
             - name: PIPELINE_WORKERS
               value: "2"
             - name: QUEUE_MAX_BYTES

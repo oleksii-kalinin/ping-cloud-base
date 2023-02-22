@@ -17,4 +17,4 @@ spec:
       name: memory
       target:
         type: Value
-        averageValue: 3.7Gi
+        averageValue: 3.6Gi
