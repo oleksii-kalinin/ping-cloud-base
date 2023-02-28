@@ -269,8 +269,8 @@ metadata:
     nri-bundle.version: 4.5.8
     app.kubernetes.io/instance: nri-bundle
     app.kubernetes.io/name: newrelic-infrastructure
-    app.kubernetes.io/version: 3.2.0
-    helm.sh/chart: newrelic-infrastructure-3.5.3
+    app.kubernetes.io/version: 3.6.0
+    helm.sh/chart: newrelic-infrastructure-3.12.0
   name: nri-bundle-nrk8s-ksm
   namespace: newrelic
 data:

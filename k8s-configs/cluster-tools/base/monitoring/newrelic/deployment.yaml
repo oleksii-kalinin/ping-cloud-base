@@ -9,10 +9,10 @@ metadata:
   labels:
     nri-bundle.version: 4.5.8
     app.kubernetes.io/name: kube-state-metrics
-    helm.sh/chart: "kube-state-metrics-2.13.2"
+    helm.sh/chart: "kube-state-metrics-4.23.0"
     app.kubernetes.io/instance: "nri-bundle"
     app.kubernetes.io/managed-by: "Helm"
-    app.kubernetes.io/version: "1.9.8"
+    app.kubernetes.io/version: "2.6.0"
 spec:
   selector:
     matchLabels:
@@ -43,6 +43,7 @@ spec:
         - --collectors=horizontalpodautoscalers
         - --collectors=ingresses
         - --collectors=jobs
+        - --collectors=leases
         - --collectors=limitranges
         - --collectors=mutatingwebhookconfigurations
         - --collectors=namespaces
@@ -63,7 +64,7 @@ spec:
         - --collectors=volumeattachments
         - --telemetry-port=8081
         imagePullPolicy: IfNotPresent
-        image: k8s.gcr.io/kube-state-metrics/kube-state-metrics:v1.9.8
+        image: k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.6.0
         securityContext:
           privileged: false
           runAsGroup: 65534
