@@ -94,7 +94,7 @@ spec:
               cpu: 100m
               memory: 150M
         - name: forwarder
-          image: public.ecr.aws/r2h3l6e4/pingcloud-clustertools/newrelic/k8s-events-forwarder:1.24.1
+          image: newrelic/k8s-events-forwarder:1.36.1
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: false
@@ -279,7 +279,7 @@ spec:
               cpu: 100m
               memory: 150M
         - name: agent
-          image: public.ecr.aws/r2h3l6e4/pingcloud-clustertools/newrelic/infrastructure-bundle:2.8.15
+          image: newrelic/infrastructure-bundle:3.1.0
           args: [ "newrelic-infra" ]
           imagePullPolicy: IfNotPresent
           securityContext:
