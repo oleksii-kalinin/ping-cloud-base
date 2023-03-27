@@ -5,7 +5,7 @@ groups:
 - name: elastic-stack-logging
   rules:
   - alert: FluentBit dropping records
-    expr: sum(increase(fluentbit_output_dropped_records_total[1m])) by (name,instance) > 10000
+    expr: sum(increase(fluentbit_output_dropped_records_total[1m])) by (name) > 100
     for: 5m
     labels:
       severity: critical
@@ -14,13 +14,13 @@ groups:
       description: "A FluentBit outputs dropping records. Possible {{ $labels.name }} output is down.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
   - alert: FluentBit retries failed
-    expr: sum(increase(fluentbit_output_retries_failed_total[1m])) by (instance, name) > 50
+    expr: sum(increase(fluentbit_output_retries_total[1m])) by (name) > 50
     for: 5m
     labels:
       severity: critical
     annotations:
-      summary: FluentBit {{ $labels.instance }} has failed retries in the output {{ $labels.name }}
-      description: "A FluentBit {{ $labels.instance }} has failed retries in the output. Possible {{ $labels.name }} output is down.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      summary: FluentBit {{ $labels.instance }} has many retries in the output {{ $labels.name }}
+      description: "A FluentBit has many retries in the output. Possible {{ $labels.name }} output is down.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
   - alert: Logstash pipeline is growing
     expr: sum(increase(logstash_node_queue_events[1m])) by (instance, pipeline) > 100000
