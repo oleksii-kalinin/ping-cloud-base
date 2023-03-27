@@ -10,7 +10,7 @@ groups:
     labels:
       severity: critical
     annotations:
-      summary: FluentBit dropping records for instance {{ $labels.instance }}, output {{ $labels.name }}
+      summary: FluentBit dropping records for output {{ $labels.name }}
       description: "A FluentBit outputs dropping records. Possible {{ $labels.name }} output is down.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
   - alert: FluentBit retries failed
@@ -19,7 +19,7 @@ groups:
     labels:
       severity: critical
     annotations:
-      summary: FluentBit {{ $labels.instance }} has many retries in the output {{ $labels.name }}
+      summary: FluentBit has many retries in the output {{ $labels.name }}
       description: "A FluentBit has many retries in the output. Possible {{ $labels.name }} output is down.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
   - alert: Logstash pipeline is growing
