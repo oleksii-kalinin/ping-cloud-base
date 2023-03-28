@@ -13,7 +13,7 @@ groups:
       summary: FluentBit dropping records for output {{ $labels.name }}
       description: "A FluentBit outputs dropping records. Possible {{ $labels.name }} output is down.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-  - alert: FluentBit retries failed
+  - alert: FluentBit retries is growing
     expr: sum(increase(fluentbit_output_retries_total[1m])) by (name) > 50
     for: 5m
     labels:
