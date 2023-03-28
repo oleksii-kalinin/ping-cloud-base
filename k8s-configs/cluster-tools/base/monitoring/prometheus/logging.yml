@@ -5,7 +5,7 @@ groups:
 - name: elastic-stack-logging
   rules:
   - alert: FluentBit dropping records
-    expr: sum(increase(fluentbit_output_dropped_records_total[1m])) by (name) > 100
+    expr: sum(increase(fluentbit_output_dropped_records_total[1m])) by (name) > 10
     for: 5m
     labels:
       severity: critical
