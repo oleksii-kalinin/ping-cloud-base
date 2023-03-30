@@ -156,7 +156,7 @@ spec:
       resources:
         requests:
           storage: "125Gi"
-      storageClassName: "opensearch-sc1"
+      storageClassName: "elasticsearch-csi-sc1"
   template:
     metadata:
       name: "opensearch-cluster-warm"
