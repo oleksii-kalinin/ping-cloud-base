@@ -23,7 +23,7 @@ groups:
       description: "A FluentBit has many retries in the output. Possible {{ $labels.name }} output is down.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
   - alert: Logstash pipeline is growing
-    expr: sum(increase(logstash_node_queue_events[1m])) by (instance, pipeline) > 100000
+    expr: sum by (instance, pipeline) (delta(logstash_node_queue_events[1m])) > 10000
     for: 10m
     labels:
       severity: critical
