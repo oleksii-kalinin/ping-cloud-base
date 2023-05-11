@@ -1358,8 +1358,6 @@ spec:
               cpu: 100m
               memory: 100Mi
           volumeMounts:
-            - mountPath: /var/lib/grafana
-              name: data
             - mountPath: /etc/grafana/provisioning/datasources
               name: grafana-datasources
               readOnly: false
@@ -1375,12 +1373,8 @@ spec:
           env:
           - name: GF_SERVER_HTTP_PORT
             value: "3000"
-          - name: GF_INSTALL_PLUGINS
-            value: "grafana-kubernetes-app,grafana-opensearch-datasource"
       restartPolicy: Always
       volumes:
-        - emptyDir: {}
-          name: data
         - name: grafana-datasources
           configMap:
             name: grafana-datasources
