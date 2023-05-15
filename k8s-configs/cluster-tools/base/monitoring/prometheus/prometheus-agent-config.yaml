@@ -211,7 +211,8 @@ data:
         target_label: namespace
         
     - job_name: 'opensearch-exporter'
-      scrape_interval: 10s
+      scrape_interval: 30s
+      scrape_timeout: 10s
       metrics_path: "/_prometheus/metrics"
       kubernetes_sd_configs:
       - role: endpoints
