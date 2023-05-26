@@ -41,14 +41,14 @@ $patch: delete
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kibana
+  name: opensearch-dashboards
   namespace: elastic-stack-logging
 $patch: delete
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: kibana
+  name: opensearch-dashboards
   namespace: elastic-stack-logging
 $patch: delete
 ---
@@ -62,7 +62,7 @@ $patch: delete
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: kibana-bootstrap
+  name: opensearch-bootstrap
   namespace: elastic-stack-logging
 $patch: delete
 ---
@@ -76,49 +76,21 @@ $patch: delete
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: kibana-dashboards-pa
+  name: os-dashboards-pa
   namespace: elastic-stack-logging
 $patch: delete
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: kibana-dashboards-pf
+  name: os-dashboards-pf
   namespace: elastic-stack-logging
 $patch: delete
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: kibana-dashboards-pd
-  namespace: elastic-stack-logging
-$patch: delete
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: kibana-alerts-common
-  namespace: elastic-stack-logging
-$patch: delete
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: kibana-alerts-pd
-  namespace: elastic-stack-logging
-$patch: delete
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: kibana-alerts-pds
-  namespace: elastic-stack-logging
-$patch: delete
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: kibana-alerts-pf
+  name: os-dashboards-pd
   namespace: elastic-stack-logging
 $patch: delete
 ---
