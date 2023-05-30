@@ -56,7 +56,7 @@ testOSDSite() {
   assertEquals "Response value was ${response}" 0 $?
 
   name=$(parse_value_from_response "${response}" 'name')
-  assertEquals "Name value was ${name}" 'Opensearch Dashboards' "$(strip_double_quotes "${name}")"
+  assertEquals "Name value was ${name}" 'OpenSearch Dashboards' "$(strip_double_quotes "${name}")"
 }
 
 testGrafanaSite() {
@@ -188,7 +188,7 @@ testOSDApplication() {
   assertEquals "Response value was ${response}" 0 $?
 
   name=$(parse_value_from_response "${response}" 'name')
-  assertEquals "Name value was ${name}" 'Opensearch Dashboards App' "$(strip_double_quotes "${name}")"
+  assertEquals "Name value was ${name}" 'OpenSearch Dashboards App' "$(strip_double_quotes "${name}")"
 }
 
 testGrafanaApplication() {
