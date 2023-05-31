@@ -62,16 +62,6 @@ patchesJson6902:
       value: elasticsearch.${DNS_ZONE}
 
 - target:
-    kind: Ingress
-    name: opensearch-dashboards
-    version: v1
-    namespace: elastic-stack-logging
-  patch: |-
-    - op: replace
-      path: /spec/rules/0/host
-      value: os-dash.${DNS_ZONE}
-
-- target:
     kind: Service
     name: opensearch-cluster-master
     namespace: elastic-stack-logging
