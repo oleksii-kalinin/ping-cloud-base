@@ -15,6 +15,7 @@ configMapGenerator:
 - name: logging-bootstrap-environment-variables
   literals:
     - SERVICE_SSM_PATH_PREFIX=/pcpt/service
+    - REGION=${REGION}
 
 - name: logging-bootstrap-resources
   files:
