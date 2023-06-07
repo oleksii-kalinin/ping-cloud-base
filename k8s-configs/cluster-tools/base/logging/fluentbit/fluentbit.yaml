@@ -103,7 +103,6 @@ data:
         emitter_name          elk.multiline
         emitter_storage.type  filesystem
         emitter_mem_buf_limit 100M
-        multiline.key_content log
         multiline.parser      multiline_java_log
     
     [FILTER]
@@ -161,7 +160,6 @@ data:
         emitter_name          elk.multiline
         emitter_storage.type  filesystem
         emitter_mem_buf_limit 100M
-        multiline.key_content log
         multiline.parser      multiline_java_log
     
     [FILTER]
