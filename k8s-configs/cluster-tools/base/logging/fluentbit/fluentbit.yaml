@@ -100,7 +100,7 @@ data:
         multiline.key_content log
         buffer                true
         flush_ms              500
-        emitter_name          elk.multiline
+        emitter_name          p14c.multiline
         emitter_storage.type  filesystem
         emitter_mem_buf_limit 100M
         multiline.parser      multiline_java_log
@@ -157,7 +157,7 @@ data:
         multiline.key_content log
         buffer                true
         flush_ms              500
-        emitter_name          elk.multiline
+        emitter_name          ping.multiline
         emitter_storage.type  filesystem
         emitter_mem_buf_limit 100M
         multiline.parser      multiline_java_log
