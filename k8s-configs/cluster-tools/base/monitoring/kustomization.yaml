@@ -19,3 +19,30 @@ patchesJson6902:
       - op: add
         path: /metadata/annotations/argocd.argoproj.io~1sync-options
         value: "Replace=true"
+
+  - target:
+      version: v1
+      kind: CustomResourceDefinition
+      name: grafanadashboards.grafana.integreatly.org
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io~1sync-options
+        value: "Replace=true"  
+
+  - target:
+      version: v1
+      kind: CustomResourceDefinition
+      name: grafanadatasources.grafana.integreatly.org
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io~1sync-options
+        value: "Replace=true"  
+
+  - target:
+      version: v1
+      kind: CustomResourceDefinition
+      name: grafanafolders.grafana.integreatly.org
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io~1sync-options
+        value: "Replace=true"
