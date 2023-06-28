@@ -15,3 +15,5 @@ When updating compare changes before pulling the artifacts, and do not override 
 Example: https://github.com/grafana-operator/grafana-operator/compare/v5.0.1...v5.0.2
 
 If there's no CRD updates - we can only update image.
+
+More information in confluence https://pingidentity.atlassian.net/wiki/spaces/PDA/pages/185139201/Grafana+and+grafana-operator
