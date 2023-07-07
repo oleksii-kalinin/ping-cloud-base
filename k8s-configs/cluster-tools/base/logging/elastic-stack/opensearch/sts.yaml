@@ -120,6 +120,8 @@ spec:
           value: "master,ingest,data,remote_cluster_client,search,"
         - name: DISABLE_INSTALL_DEMO_CONFIG
           value: "true"
+        - name: NODE_SEARCH_CACHE_SIZE
+          value: "100Mb"
         volumeMounts:
         - name: "data"
           mountPath: /usr/share/opensearch/data
