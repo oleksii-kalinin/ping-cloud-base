@@ -72,7 +72,7 @@ spec:
             - ALL
           runAsNonRoot: true
           runAsUser: 1000
-        image: public.ecr.aws/opensearchproject/opensearch:2.7.0
+        image: 705370621539.dkr.ecr.us-west-2.amazonaws.com/pingcloud-monitoring/opensearch:PDO-5498-OS-2.7.0
         imagePullPolicy: Always
         readinessProbe:
           failureThreshold: 3
@@ -200,7 +200,7 @@ spec:
             - ALL
           runAsNonRoot: true
           runAsUser: 1000
-        image: public.ecr.aws/opensearchproject/opensearch:2.7.0
+        image: 705370621539.dkr.ecr.us-west-2.amazonaws.com/pingcloud-monitoring/opensearch:PDO-5498-OS-2.7.0
         imagePullPolicy: Always
         readinessProbe:
           failureThreshold: 3
