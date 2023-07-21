@@ -20,3 +20,6 @@ configMapGenerator:
    - default-rule.yml
    - logging.yml
    - kube-alerts.yml
+
+# generatorOptions:
+#   disableNameSuffixHash: true
