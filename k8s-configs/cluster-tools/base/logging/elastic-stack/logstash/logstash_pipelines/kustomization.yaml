@@ -8,6 +8,3 @@ resources:
 - s3
 - cloudwatch
 - newrelic
-
-generatorOptions:
-  disableNameSuffixHash: true
