@@ -357,7 +357,7 @@ groups:
     for: 60s
     labels:
        service: postgresql
-       severity: critical
+       severity: alert
        severity_num: 300
     annotations:
        summary: 'Expected runtime of diff backup for stanza [db] has exceeded 1 hour'
