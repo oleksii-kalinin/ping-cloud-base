@@ -161,6 +161,11 @@ spec:
                 secretKeyRef:
                   name: nr-license-key
                   key: NEW_RELIC_LICENSE_KEY
+            - name: SIGSCI_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: sigsci-api-key
+                  key: SIGSCI_TOKEN
           envFrom:
             - configMapRef:
                 name: elk-environment-variables
