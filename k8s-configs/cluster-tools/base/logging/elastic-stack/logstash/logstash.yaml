@@ -7,6 +7,15 @@ metadata:
     sealedsecrets.bitnami.com/managed: "true"
 
 ---
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: sigsci-api-key
+  annotations:
+    sealedsecrets.bitnami.com/managed: "true"
+
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
