@@ -16,3 +16,5 @@ data:
       path.config: "/usr/share/logstash/pipeline/cloudwatch"
     - pipeline.id: newrelic
       path.config: "/usr/share/logstash/pipeline/newrelic"
+    - pipeline.id: sigsci
+      path.config: "/usr/share/logstash/pipeline/sigsci"

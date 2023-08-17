@@ -83,7 +83,7 @@ spec:
               cpu: "150m"
               memory: 100Mi
         - name: logstash
-          image: public.ecr.aws/r2h3l6e4/pingcloud-monitoring/logstash/dev:v1.19-release-branch-latest
+          image: 705370621539.dkr.ecr.us-west-2.amazonaws.com/pingcloud-monitoring/logstash:logstash-sigsci
           imagePullPolicy: Always
           command:
             - "/bin/sh"
@@ -215,6 +215,9 @@ spec:
             - name: logstash-pipeline-nr
               mountPath: /usr/share/logstash/pipeline/newrelic
               readOnly: true
+            - name: logstash-pipeline-sigsci
+              mountPath: /usr/share/logstash/pipeline/sigsci
+              readOnly: true
             - name: logstash-search-template
               mountPath: /etc/logstash/templates
               readOnly: true
@@ -278,6 +281,9 @@ spec:
         - name: logstash-pipeline-nr
           configMap:
             name: logstash-pipeline-nr
+        - name: logstash-pipeline-sigsci
+          configMap:
+            name: logstash-pipeline-sigsci
         - name: logstash-pipelines
           configMap:
             name: logstash-pipelines
