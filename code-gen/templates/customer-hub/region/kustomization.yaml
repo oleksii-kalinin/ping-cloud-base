@@ -23,6 +23,7 @@ patchesStrategicMerge:
 
 ### Remove observability dashbaords for undeployed products
 - ../base/cluster-tools/monitoring/remove-chub-dashboards.yaml
+- ../base/cluster-tools/logging/remove-chub-dashboards.yaml
 
 ### Regional enablement - remove admins, backups, etc. from secondary ###
 ### The removal of these patches is handled automatically via generate-cluster-state script, manual toggling is not needed ###
