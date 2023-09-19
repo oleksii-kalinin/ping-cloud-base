@@ -12,7 +12,6 @@ helmCharts:
     additionalValuesFiles:
       - ../../values-files/base/values.yaml   # base values.yaml
       - ../../values-files/${REGION_NICK_NAME}/values.yaml   # regional values.yaml
-#      - newrelic-values.yaml   # chart specific values.yaml
     version: v1.19-PDO-5941-grafana-helm
     repo: oci://705370621539.dkr.ecr.us-west-2.amazonaws.com/dev/grafana-operator
 
