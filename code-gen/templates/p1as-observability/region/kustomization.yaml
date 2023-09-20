@@ -4,17 +4,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 resources:
   - ../base
   - custom-resources
+  - prometheus
 
-helmCharts:
-  - name: grafana-operator
-    namespace: prometheus
-    releaseName: grafana-operator
-    additionalValuesFiles:
-      - ../../values-files/base/values.yaml   # base values.yaml
-      - ../../values-files/${REGION_NICK_NAME}/values.yaml   # regional values.yaml
-    version: v1.19-PDO-5941-grafana-helm
-    repo: oci://705370621539.dkr.ecr.us-west-2.amazonaws.com/dev/grafana-operator
-
+helmCharts: []
 
 patchesStrategicMerge:
   ### PS/GSO customizations to OOTB resources should only go into this file. Otherwise, CSR auto-updates will break. ###

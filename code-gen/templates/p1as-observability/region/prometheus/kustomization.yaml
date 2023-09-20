@@ -1,0 +1,14 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+namespace: $NS
+
+helmCharts:
+  - name: grafana-operator
+    includeCRDs: true
+    releaseName: grafana-operator
+    additionalValuesFiles:
+      - ../../../values-files/base/values.yaml   # base values.yaml
+      - ../../../values-files/${REGION_NICK_NAME}/values.yaml   # regional values.yaml
+      - values.yaml
+    version: v1.19-PDO-5941-grafana-helm
+    repo: oci://705370621539.dkr.ecr.us-west-2.amazonaws.com/dev/grafana-operator
