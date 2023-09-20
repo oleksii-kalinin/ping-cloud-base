@@ -5,7 +5,7 @@ namespace: $NS
 helmCharts:
   - name: grafana-operator
     includeCRDs: true
-    releaseName: grafana-operator
+    releaseName: p1as-obs
     additionalValuesFiles:
       - ../../../values-files/base/values.yaml   # base values.yaml
       - ../../../values-files/${REGION_NICK_NAME}/values.yaml   # regional values.yaml
