@@ -476,9 +476,9 @@ spec:
               "expr": "sum(ALERTS{alertstate=\"firing\",severity=\"warning\",service=\"postgresql\"} > 0) OR on() vector(0)",
               "format": "time_series",
               "instant": true,
-              "fixed_interval": "Warning",
+              "fixed_interval": "",
               "intervalFactor": 2,
-              "legendFormat": "",
+              "legendFormat": "Warning",
               "refId": "A"
             }
           ],
