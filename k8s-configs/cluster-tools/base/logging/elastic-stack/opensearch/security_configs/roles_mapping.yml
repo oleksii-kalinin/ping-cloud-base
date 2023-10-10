@@ -53,6 +53,7 @@ all_access:
   backend_roles:
   - "admin"
   - "opendistro_security_anonymous_backendrole"
+  - "dashboards_admin"
   description: "Maps admin to all_access"
 
 logstash:
