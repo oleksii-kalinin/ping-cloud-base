@@ -70,6 +70,7 @@ kibana_user:
   reserved: false
   backend_roles:
   - "kibanauser"
+  - "dashboards_admin"
   description: "Maps kibanauser to kibana_user"
 
 kibana_server:
