@@ -46,7 +46,7 @@ config:
           config:
             subject_key: preferred_username
             roles_key: roles
-            openid_connect_url: https://trial-4536773-admin.okta.com/.well-known/openid-configuration
+            openid_connect_url: https://auth.pingone.eu/277c89a6-fb5d-477d-b367-2422f473dc9b/as/.well-known/openid-configuration
         authentication_backend:
           type: noop
     authz:
