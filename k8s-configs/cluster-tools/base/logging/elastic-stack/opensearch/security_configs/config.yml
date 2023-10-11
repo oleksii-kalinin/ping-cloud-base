@@ -18,7 +18,7 @@ config:
       anonymous_auth_enabled: true
       xff:
         enabled: false
-#        internalProxies: '192\.168\.0\.10|192\.168\.0\.11' # regex pattern
+        # internalProxies: '192\.168\.0\.10|192\.168\.0\.11' # regex pattern
         internalProxies: '.*' # trust all internal proxies, regex pattern
         remoteIpHeader:  'x-forwarded-for'
         ###### see https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html for regex help
