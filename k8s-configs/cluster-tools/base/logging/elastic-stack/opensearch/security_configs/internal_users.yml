@@ -34,3 +34,10 @@ bootstrap:
   hash: "$2y$12$rKbj1eVYptD9uw5B7COX4uOKffCoTLaDwZftW8VKVwZmmT4mJRWsy"
   reserved: true
   description: "Bootstrap user"
+
+demo:
+  hash: "$2y$12$DWrSMchWDUfwJCW1KQATheUPs7UBqkf8hK/oeFSSlyizlllpR3XAm"
+  reserved: true
+  backend_roles:
+    - "admin"
+  description: "Demo user"
