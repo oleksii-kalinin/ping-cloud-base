@@ -120,8 +120,6 @@ spec:
           value: "cluster_manager,ingest,data,remote_cluster_client,search,"
         - name: DISABLE_INSTALL_DEMO_CONFIG
           value: "true"
-        - name: logger.level
-          value: "DEBUG"
         volumeMounts:
         - name: "data"
           mountPath: /usr/share/opensearch/data
@@ -130,6 +128,9 @@ spec:
         - name: config
           mountPath: /usr/share/opensearch/config/opensearch.yml
           subPath: opensearch.yml
+        - name: config
+          mountPath: /usr/share/opensearch/config/log4j2.properties
+          subPath: log4j2.properties
         - name: node-cert
           mountPath: /usr/share/opensearch/config/certs
 
