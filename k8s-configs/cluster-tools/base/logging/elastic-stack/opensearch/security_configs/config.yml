@@ -45,6 +45,7 @@ config:
           config:
             openid_connect_idp:
               enable_ssl: true
+              verify_hostnames: false
             subject_key: preferred_username
             roles_key: groups
             openid_connect_url: https://auth.pingone.eu/277c89a6-fb5d-477d-b367-2422f473dc9b/as/.well-known/openid-configuration
