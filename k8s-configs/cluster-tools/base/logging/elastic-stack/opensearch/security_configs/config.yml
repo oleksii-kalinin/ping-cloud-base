@@ -26,6 +26,15 @@ config:
         ###### and here https://tools.ietf.org/html/rfc7239
         ###### and https://tomcat.apache.org/tomcat-8.0-doc/config/valve.html#Remote_IP_Valve
     authc:
+      basic_internal_auth_domain:
+        http_enabled: true
+        transport_enabled: true
+        order: 1
+        http_authenticator:
+          type: basic
+          challenge: false
+        authentication_backend:
+          type: internal
       openid_auth_domain:
         http_enabled: true
         transport_enabled: true
@@ -34,10 +43,7 @@ config:
           type: openid
           challenge: false
           config:
-            openid_connect_idp:
-              enable_ssl: true
-              verify_hostnames: false
-            subject_key: preferred_username
+            subject_key: email
             roles_key: groups
             openid_connect_url: https://auth.pingone.eu/277c89a6-fb5d-477d-b367-2422f473dc9b/as/.well-known/openid-configuration
         authentication_backend:
