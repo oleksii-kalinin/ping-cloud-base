@@ -130,9 +130,6 @@ spec:
         - name: config
           mountPath: /usr/share/opensearch/config/opensearch.yml
           subPath: opensearch.yml
-        - name: config
-          mountPath: /usr/share/opensearch/config/log4j2.properties
-          subPath: log4j2.properties
         - name: node-cert
           mountPath: /usr/share/opensearch/config/certs
 
