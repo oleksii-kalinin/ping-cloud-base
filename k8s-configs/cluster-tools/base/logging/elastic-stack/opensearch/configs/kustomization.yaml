@@ -7,3 +7,4 @@ configMapGenerator:
   - name: opensearch-config
     files:
       - opensearch.yml
+      - log4j2.properties
