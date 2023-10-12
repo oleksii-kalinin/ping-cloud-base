@@ -8,7 +8,7 @@ data:
   opensearch_dashboards.yml: |
     opensearch.ssl.verificationMode: full
     opensearch.ssl.certificateAuthorities: /usr/share/opensearch-dashboards/config/certs/ca.crt
-    opensearch.requestHeadersAllowlist: [Authorization, securitytenant]
+    opensearch.requestHeadersAllowlist: ["Authorization", "security_tenant"]
     opensearch_security.auth.anonymous_auth_enabled: false
     opensearch_security.multitenancy.enabled: false
     opensearch_security.readonly_mode.roles: [kibana_read_only]
@@ -19,7 +19,7 @@ data:
     opensearchDashboards.branding.useExpandedHeader: false
     opensearch_security.auth.type: [ "basicauth","openid" ]
     opensearch_security.auth.multiple_auth_enabled: true
-    opensearch_security.openid.connect_url: https://trial-4536773.okta.com/.well-known/openid-configuration
+    opensearch_security.openid.connect_url: https://auth.pingone.eu/277c89a6-fb5d-477d-b367-2422f473dc9b/as/.well-known/openid-configuration
     opensearch_security.openid.client_id: client_id
     opensearch_security.openid.client_secret: client_secret
     opensearch_security.openid.trust_dynamic_headers: true
