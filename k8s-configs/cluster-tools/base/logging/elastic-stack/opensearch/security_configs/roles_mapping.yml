@@ -86,4 +86,11 @@ bootstrap:
   reserved: true
   users:
   - "bootstrap"
+
+readall:
+  reserved: false
+  backend_roles:
+  - "readall"
+  - "dashboards_user"
+
   
