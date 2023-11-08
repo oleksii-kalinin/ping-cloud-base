@@ -305,6 +305,9 @@ spec:
         - name: os-certs
           secret:
             secretName: opensearch-cert
+        - name: logstash
+          persistentVolumeClaim:
+            claimName: logstash
   serviceName: logstash-elastic
   volumeClaimTemplates:
     - metadata:
