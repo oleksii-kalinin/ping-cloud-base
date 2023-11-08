@@ -258,6 +258,9 @@ spec:
             - name: PYTHONIOENCODING
               value: UTF-8
           volumeMounts:
+            - name: logstash
+              mountPath: /usr/share/logstash/data/queue
+              readOnly: false
             - name: enrichment-cache-files
               mountPath: /enrichment-cache-files
               readOnly: false
