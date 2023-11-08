@@ -117,7 +117,7 @@ spec:
             - name: QUEUE_TYPE
               value: persisted
             - name: QUEUE_MAX_BYTES
-              value: 1000gb
+              value: 40gb
             - name: QUEUE_DRAIN
               value: "true"
             - name: DEAD_LETTER_QUEUE_ENABLE
@@ -175,7 +175,7 @@ spec:
             httpGet:
               path: /
               port: 8080
-            initialDelaySeconds: 30
+            initialDelaySeconds: 120
             periodSeconds: 10
             successThreshold: 3
             timeoutSeconds: 5
@@ -319,7 +319,7 @@ spec:
         storageClassName: ebs-gp3
         resources:
           requests:
-            storage: 10Gi
+            storage: 50Gi
 
 
 ---
