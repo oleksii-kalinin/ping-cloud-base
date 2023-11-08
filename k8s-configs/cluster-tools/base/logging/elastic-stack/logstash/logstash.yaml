@@ -25,6 +25,8 @@ spec:
       labels:
         app: logstash-elastic
     spec:
+      securityContext:
+        fsGroup: 1000
       serviceAccountName: logstash-elastic
       initContainers:
         - name: wait-for-bootstrap-completed
@@ -94,7 +96,6 @@ spec:
             runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
-            fsGroup: 1000
             allowPrivilegeEscalation: false
           env:
             - name: CONTAINER_NAME
