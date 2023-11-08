@@ -228,7 +228,7 @@ spec:
             - name: enrichment-cache-files
               mountPath: /enrichment-cache-files
               readOnly: false
-            - name: logstash-efs
+            - name: logstash
               mountPath: /usr/share/logstash/data/queue
               readOnly: false
             - name: os-certs
@@ -260,6 +260,9 @@ spec:
           volumeMounts:
             - name: enrichment-cache-files
               mountPath: /enrichment-cache-files
+              readOnly: false
+            - name: logstash
+              mountPath: /usr/share/logstash/data/queue
               readOnly: false
           resources:
             limits:
@@ -305,16 +308,16 @@ spec:
   serviceName: logstash-elastic
   volumeClaimTemplates:
     - metadata:
-        name: logstash-efs
+        name: logstash
         labels:
           app: logstash-elastic
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: efs
+        storageClassName: gp3
         resources:
           requests:
-            storage: 1Mi
+            storage: 10Gi
 
 
 ---
