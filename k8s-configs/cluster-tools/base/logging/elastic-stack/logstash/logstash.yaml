@@ -261,9 +261,6 @@ spec:
             - name: enrichment-cache-files
               mountPath: /enrichment-cache-files
               readOnly: false
-            - name: logstash
-              mountPath: /usr/share/logstash/data/queue
-              readOnly: false
           resources:
             limits:
               cpu: "500m"
