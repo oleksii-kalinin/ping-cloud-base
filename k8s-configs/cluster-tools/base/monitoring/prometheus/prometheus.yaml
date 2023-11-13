@@ -15,9 +15,9 @@ spec:
       labels:
         app: prometheus
     spec:
+      serviceAccountName: prometheus
       securityContext:
         fsGroup: 0
-      serviceAccountName: prometheus
       containers:
       - name: prometheus
         image: prom/prometheus:v2.47.2
