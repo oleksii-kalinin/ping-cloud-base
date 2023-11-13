@@ -41,7 +41,7 @@ spec:
           - name: prometheus-config-volume
             mountPath: /etc/prometheus/
           - name: prometheus-storage-volume
-            mountPath: /prometheus/data
+            mountPath: /prometheus
           - name: alertsconfig
             mountPath: /etc/prometheus/alert-rules.d
 
