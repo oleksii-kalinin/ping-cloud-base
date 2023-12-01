@@ -76,7 +76,7 @@ spec:
       storageClassName: prometheus-gp3
       resources:
         requests:
-          storage: 50Gi
+          storage: 30Gi
 
 ---
 
