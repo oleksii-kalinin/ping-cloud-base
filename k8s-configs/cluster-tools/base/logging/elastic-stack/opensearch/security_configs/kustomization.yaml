@@ -15,7 +15,8 @@ secretGenerator:
       - roles.yml
       - roles_mapping.yml
       - tenants.yml
-      - whitelist.yml
+      - allowlist.yml
 generatorOptions:
+  disableNameSuffixHash: true
   annotations:
     sealedsecrets.bitnami.com/managed: "true"  

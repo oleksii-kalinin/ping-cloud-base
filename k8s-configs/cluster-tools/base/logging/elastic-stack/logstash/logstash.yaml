@@ -303,7 +303,7 @@ spec:
           emptyDir: {}
         - name: os-certs
           secret:
-            secretName: opensearch-cert
+            secretName: opensearch-cluster-http-cert
   serviceName: logstash-elastic
   volumeClaimTemplates:
     - metadata:

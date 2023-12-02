@@ -26,7 +26,7 @@ spec:
             name: opensearch-dashboards-config
         - name: os-certs
           secret:
-            secretName: opensearch-cert
+            secretName: opensearch-cluster-http-cert
       containers:
       - name: dashboards
         securityContext:
