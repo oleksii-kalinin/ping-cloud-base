@@ -4,7 +4,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 namespace: elastic-stack-logging
 
 resources:
-- cluster.yaml
+- operator
 #- configs
 - security_configs
 #- pdb.yaml

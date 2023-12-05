@@ -1,0 +1,27 @@
+apiVersion: opensearch.opster.io/v1
+kind: OpenSearchISMPolicy
+metadata:
+   name: test-ping-ism
+spec:
+  opensearchCluster:
+    name: opensearch-cluster
+  description: Test Ping Policy created with operator
+  policyId: test_ping_policy
+  defaultState: hot
+  states:
+    - name: hot
+      actions: []
+      transitions:
+        - stateName: delete
+          conditions:
+            minIndexAge: 7d
+    - name: delete
+      actions:
+        - retry:
+            count: 3
+            backoff: exponential
+            delay: 1m
+  ismTemplate:
+    indexPatterns:
+    - healthchecks-*
+    - backup-*
