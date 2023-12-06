@@ -236,7 +236,7 @@ spec:
             - ALL
           runAsNonRoot: true
           runAsUser: 1000
-        image: ppublic.ecr.aws/opensearchproject/opensearch:2.11.1
+        image: public.ecr.aws/opensearchproject/opensearch:2.11.1
         imagePullPolicy: Always
         readinessProbe:
           failureThreshold: 3
