@@ -97,6 +97,7 @@
 - Newrelic-Prometheus-Agent: Send Kubernetes-volume-Autoscaler Metrics to New Relic
 - Update CreateCluster script to provision Karpenter-ready Cluster.
 - Prometheus: Migrate to AWS EBS gp3 Volumes
+- Increase OpenSearch warm replicas to 3 to make it HA
 
 _Changes:_
 
@@ -234,6 +235,7 @@ _Changes:_
 - [X] PDO-6335 Newrelic-Prometheus-Agent: Send Kubernetes-volume-Autoscaler Metrics to New Relic
 - [X] PDO-6337 Migrate logstash to the GP3 volumes
 - [X] PDO-6338 Migrate Prometheus to the GP3 volumes
+- [X] PDO-6411 Increase OpenSearch warm replicas to 3 to make it HA
 - [X] PDO-6420 Update tag-release.sh to replace the helm chart versions in PCB
 
 ### 1.18.0.0
