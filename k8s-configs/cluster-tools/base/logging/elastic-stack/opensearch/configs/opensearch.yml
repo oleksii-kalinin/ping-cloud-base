@@ -3,8 +3,8 @@ network.host: 0.0.0.0
 reindex.remote.whitelist: "*:9200"
 cluster.max_shards_per_node: 10000
 node.search.cache.size: 500mb
-prometheus:
-  indices: false
+#prometheus:
+#  indices: false
 
 plugins:
   security:
