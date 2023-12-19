@@ -74,7 +74,7 @@ kibana_user:
 kibana_server:
   reserved: true
   users:
-  - "kibanaserver"
+  - "dashboards"
 
 index_migration:
   reserved: true

@@ -12,7 +12,7 @@ config:
     kibana:
      #Kibana multitenancy
       multitenancy_enabled: false
-      server_username: kibanaserver
+      server_username: dashboards
       index: '.kibana'
     http:
       anonymous_auth_enabled: true
