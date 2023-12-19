@@ -8,7 +8,7 @@ resources:
 - logstash
 - namespace.yaml
 - opensearch
-- os-dashboards
+#- os-dashboards
 
 configMapGenerator:
 - name: elk-environment-variables
