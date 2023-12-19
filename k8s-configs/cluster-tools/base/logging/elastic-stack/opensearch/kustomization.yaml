@@ -17,4 +17,5 @@ resources:
 - alerts
 - notifications
 - bootstrap.yaml
+- cluster
 

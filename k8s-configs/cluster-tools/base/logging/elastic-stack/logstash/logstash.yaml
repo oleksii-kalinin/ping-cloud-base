@@ -233,8 +233,6 @@ spec:
             - name: logstash-gp3
               mountPath: /usr/share/logstash/data/queue
               readOnly: false
-#            - name: os-certs
-#              mountPath: /usr/share/logstash/certs
         # Sidecar enrichment container which updates Logstash dictionaries
         - name: enrichment-sidecar
           securityContext:
@@ -301,9 +299,6 @@ spec:
             name: enrichment-cache
         - name: enrichment-cache-files
           emptyDir: {}
-#        - name: os-certs
-#          secret:
-#            secretName: opensearch-cert
   serviceName: logstash-elastic
   volumeClaimTemplates:
     - metadata:
