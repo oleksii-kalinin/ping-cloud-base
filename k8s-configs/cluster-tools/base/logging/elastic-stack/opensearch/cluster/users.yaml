@@ -1,0 +1,12 @@
+apiVersion: opensearch.opster.io/v1
+kind: OpensearchUser
+metadata:
+  name: administrator
+spec:
+  opensearchCluster:
+    name: opensearch-cluster
+  passwordFrom:
+    name: opensearch-admin-config
+    key: password
+  backendRoles:
+  - admin
