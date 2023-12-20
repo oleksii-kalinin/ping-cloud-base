@@ -5,5 +5,6 @@ namespace: elastic-stack-logging
 
 resources:
   - ../security_configs
+  - index-templates
   - cluster.yaml
   - secrets.yaml
