@@ -14,6 +14,9 @@ config:
       multitenancy_enabled: false
       server_username: kibanaserver
     authc:
+      # OpenSearch Dashboards requires that the internal OpenSearch Dashboards server user can authenticate through
+      # HTTP basic authentication, so we must configure two authentication domains. For OpenID Connect, the HTTP basic
+      # domain has to be placed first in the chain. (HTTP is set to `order: 0`, and OIDC is `order: 1`)
       basic_internal_auth_domain:
         description: "Authenticate via HTTP Basic against internal users database"
         http_enabled: true
