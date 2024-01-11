@@ -6,15 +6,15 @@ namespace: elastic-stack-logging
 resources:
 - configs
 - security_configs
-- pdb.yaml
-- rbac.yaml
-- service.yaml
-- sts.yaml
+#- pdb.yaml
+#- rbac.yaml
+#- service.yaml
+#- sts.yaml
 - index-templates
 - storageclass.yaml
-- certs.yaml
+#- certs.yaml
 - ism-policies
 - alerts
 - notifications
 - bootstrap.yaml
-
+- cluster.yaml

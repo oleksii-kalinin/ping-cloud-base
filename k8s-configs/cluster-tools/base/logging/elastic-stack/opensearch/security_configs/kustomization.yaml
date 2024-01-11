@@ -3,6 +3,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 
 namespace: elastic-stack-logging
 
+resources:
+  - os-admin-secret.yaml
+  - os-dashboard-secret.yaml
+
 secretGenerator:
   - name: opensearch-securityconfig
     type: Opaque
@@ -15,7 +19,7 @@ secretGenerator:
       - roles.yml
       - roles_mapping.yml
       - tenants.yml
-      - whitelist.yml
+      - allowlist.yml
 generatorOptions:
   disableNameSuffixHash: true
   annotations:

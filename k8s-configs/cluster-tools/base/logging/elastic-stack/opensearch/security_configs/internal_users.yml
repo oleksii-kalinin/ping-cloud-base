@@ -4,16 +4,15 @@ _meta:
 
 # Define your internal users here
 
-
 admin:
-  hash: "$2y$12$x0W/bb.rCExntDszzTQMGO46BjhcabBlY/j44cLQlQgpNCPImb00m"
+  hash: "$2a$12$SmciNBIfxed5FFj6I/ZxXeBKydKN3DQ3YhCozvLnsmefTOT78.pkC"
   reserved: true
   backend_roles:
   - "admin"
   description: "Admin user"
 
 kibanaserver:
-  hash: "$2y$12$KLiCHmtIiXpojpsriqFBBedlHyuOB6QSWFK932S1DELwzKdZ0ioAq"
+  hash: "$2a$12$juEkCORqAAsHzrb62bGjiubmjpRCJXqb9WeMU1QSB53Xu7O8Ie18K"
   reserved: true
   description: "OpenSearch Dashboards user"
 
@@ -23,7 +22,6 @@ logstash:
   backend_roles:
   - "logstash"
   description: "Logstash user"
-
 
 indexmigration:
   hash: "$2y$12$nnNxuzpFcBlpO/FesnUA7O8oZRFF.zBZaBpKKk0zeokYOzq.Y4plu"
