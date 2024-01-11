@@ -4,6 +4,7 @@ _meta:
 
 # Define your internal users here
 
+
 admin:
   hash: "$2a$12$SmciNBIfxed5FFj6I/ZxXeBKydKN3DQ3YhCozvLnsmefTOT78.pkC"
   reserved: true
@@ -22,6 +23,7 @@ logstash:
   backend_roles:
   - "logstash"
   description: "Logstash user"
+
 
 indexmigration:
   hash: "$2y$12$nnNxuzpFcBlpO/FesnUA7O8oZRFF.zBZaBpKKk0zeokYOzq.Y4plu"

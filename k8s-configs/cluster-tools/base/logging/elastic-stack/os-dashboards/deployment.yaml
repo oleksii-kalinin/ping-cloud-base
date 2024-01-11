@@ -24,9 +24,6 @@ spec:
         - name: config
           configMap:
             name: opensearch-dashboards-config
-        - name: os-certs
-          secret:
-            secretName: opensearch-cert
       containers:
       - name: dashboards
         securityContext:
@@ -91,5 +88,3 @@ spec:
           - name: config
             mountPath: /usr/share/opensearch-dashboards/config/opensearch_dashboards.yml
             subPath: opensearch_dashboards.yml
-          - name: os-certs
-            mountPath: /usr/share/opensearch-dashboards/config/certs

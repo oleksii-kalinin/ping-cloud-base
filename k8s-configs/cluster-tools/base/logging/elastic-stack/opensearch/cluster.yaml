@@ -2,7 +2,6 @@ apiVersion: opensearch.opster.io/v1
 kind: OpenSearchCluster
 metadata:
   name: opensearch-cluster
-  namespace: elastic-stack-logging
 spec:
   security:
     tls:
@@ -19,6 +18,7 @@ spec:
     serviceName: opensearch-cluster
     version: 2.8.0
     image: public.ecr.aws/r2h3l6e4/pingcloud-monitoring/opensearch/dev:v1.19-release-branch-latest
+    setVMMaxMapCount: true
     additionalConfig:
       node.search.cache.size: 500m
       cluster.max_shards_per_node: "10000"
@@ -38,8 +38,30 @@ spec:
          cpu: "200m"
   nodePools:
     - component: hot
+      labels:
+        app.kubernetes.io/name: opensearch
+        app.kubernetes.io/instance: opensearch-cluster-hot
       replicas: 3
       diskSize: "8Gi"
+      jvm: -Xmx3000M -Xms3000M
+      additionalConfig:
+        node.attr.temp: "hot"
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            podAffinityTerm:
+              topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/instance
+                  operator: In
+                  values:
+                  - opensearch-cluster-hot
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                  - opensearch
       persistence:
         pvc:
           storageClass: opensearch-gp3
@@ -59,8 +81,26 @@ spec:
         - "remote_cluster_client"
         - "search"
     - component: warm
+      labels:
+        app.kubernetes.io/name: opensearch
+        app.kubernetes.io/instance: opensearch-cluster-warm
       replicas: 3
       diskSize: "140Gi"
+      jvm: -Xmx3g -Xms3g
+      additionalConfig:
+        node.attr.temp: "hot"
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            podAffinityTerm:
+              topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                  - opensearch
       persistence:
         pvc:
           storageClass: opensearch-sc1
