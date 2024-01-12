@@ -51,20 +51,14 @@ spec:
         node.attr.temp: "hot"
       affinity:
         podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            podAffinityTerm:
-              topologyKey: kubernetes.io/hostname
-              labelSelector:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
                 matchExpressions:
-                - key: app.kubernetes.io/instance
-                  operator: In
-                  values:
-                  - opensearch-cluster-hot
-                - key: app.kubernetes.io/name
-                  operator: In
-                  values:
-                  - opensearch
+                  - key: app.kubernetes.io/instance
+                    operator: In
+                    values:
+                      - opensearch-cluster-hot
+              topologyKey: kubernetes.io/hostname
       persistence:
         pvc:
           storageClass: opensearch-gp3
@@ -97,16 +91,14 @@ spec:
         node.attr.temp: "hot"
       affinity:
         podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            podAffinityTerm:
-              topologyKey: kubernetes.io/hostname
-              labelSelector:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
                 matchExpressions:
-                - key: app.kubernetes.io/name
-                  operator: In
-                  values:
-                  - opensearch
+                  - key: app.kubernetes.io/instance
+                    operator: In
+                    values:
+                      - opensearch-cluster-warm
+              topologyKey: kubernetes.io/hostname
       persistence:
         pvc:
           storageClass: opensearch-sc1

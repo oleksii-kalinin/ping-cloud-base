@@ -9,7 +9,6 @@ resources:
 - namespace.yaml
 - opensearch-operator
 - opensearch
-#- os-dashboards
 
 configMapGenerator:
 - name: elk-environment-variables
