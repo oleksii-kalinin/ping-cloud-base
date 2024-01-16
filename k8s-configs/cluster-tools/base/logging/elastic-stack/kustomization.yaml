@@ -7,7 +7,6 @@ resources:
 - enrichment
 - logstash
 - namespace.yaml
-- opensearch-operator
 - opensearch
 
 configMapGenerator:

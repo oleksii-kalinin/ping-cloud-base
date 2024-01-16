@@ -4,7 +4,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 namespace: elastic-stack-logging
 
 resources:
-- opensearch-operator-crds.yaml
 - opensearch-operator-controller-manager-deployment.yaml
 - opensearch-operator-controller-manager-metrics-service.yaml
 - opensearch-operator-controller-manager-sa.yaml
