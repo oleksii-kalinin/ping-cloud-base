@@ -21,7 +21,7 @@ spec:
           allowPrivilegeEscalation: false
         env:
           - name: OS_HOST
-            value: "opensearch-cluster.elastic-stack-logging.svc.cluster.local"
+            value: "opensearch.elastic-stack-logging.svc.cluster.local"
           - name: OS_PORT
             value: "9200"
           - name: BOOTSTRAP_USER
@@ -53,7 +53,7 @@ spec:
           - name: ISM_PATH
             value: "/usr/share/opensearch/data/ism-policies"
           - name: OSD_URL
-            value: "http://opensearch-cluster-dashboards:5601"
+            value: "http://opensearch-dashboards:5601"
           - name: DASHBOARDS_PATH
             value: "/usr/share/opensearch/data/dashboards"
         volumeMounts:
