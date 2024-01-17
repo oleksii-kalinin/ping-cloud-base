@@ -9,23 +9,4 @@ resources:
 patchesStrategicMerge:
 - elastic-stack/logstash/logstash-limits.yaml
 - elastic-stack/logstash/hpa-limits.yaml
-
-patches:
-  - target:
-      kind: OpenSearchCluster
-      name: opensearch-cluster
-      group: opensearch.opster.io
-      version: v1
-    patch: |-
-      - op: replace
-        path: /spec/nodePools/0/resources/limits/memory
-        value: 10Gi
-      - op: replace
-        path: /spec/nodePools/0/resources/limits/cpu
-        value: "8"
-      - op: replace
-        path: /spec/nodePools/0/resources/requests/memory
-        value: 8Gi
-      - op: replace
-        path: /spec/nodePools/0/resources/requests/cpu
-        value: "4"
+- elastic-stack/opensearch/os-limits.yaml

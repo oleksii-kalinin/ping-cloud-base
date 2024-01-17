@@ -1,0 +1,22 @@
+apiVersion: opensearch.opster.io/v1
+kind: OpenSearchCluster
+metadata:
+  name: opensearch-cluster
+spec:
+  nodePools:
+    - component: hot
+      jvm: -Xms6g -Xmx6g
+      replicas: 5
+      resources:
+        requests:
+          memory: 8Gi
+          cpu: "6"
+        limits:
+          memory: 6Gi
+          cpu: "2"
+      roles: # Do not change roles
+        - "cluster_manager"
+        - "data"
+        - "ingest"
+        - "remote_cluster_client"
+        - "search"
