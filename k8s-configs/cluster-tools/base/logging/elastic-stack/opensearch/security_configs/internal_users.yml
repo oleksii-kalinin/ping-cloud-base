@@ -2,11 +2,8 @@ _meta:
   type: "internalusers"
   config_version: 2
 
-# Define your internal users here
-
-
 admin:
-  hash: "$2a$12$SmciNBIfxed5FFj6I/ZxXeBKydKN3DQ3YhCozvLnsmefTOT78.pkC"
+  hash: "$2y$12$iqKXNBvoxmfL1NELMtEaWeuvsp08lSbQy/B.GQ9zt.yhbhfDbHbl."
   reserved: true
   backend_roles:
   - "admin"
@@ -23,7 +20,6 @@ logstash:
   backend_roles:
   - "logstash"
   description: "Logstash user"
-
 
 indexmigration:
   hash: "$2y$12$nnNxuzpFcBlpO/FesnUA7O8oZRFF.zBZaBpKKk0zeokYOzq.Y4plu"

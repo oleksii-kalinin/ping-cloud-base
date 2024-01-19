@@ -9,11 +9,11 @@ spec:
       replicas: 5
       resources:
         requests:
-          memory: 10Gi
-          cpu: "8"
-        limits:
           memory: 8Gi
           cpu: "2"
+        limits:
+          memory: 10Gi
+          cpu: "8"
       roles: # Do not change roles
         - "cluster_manager"
         - "data"

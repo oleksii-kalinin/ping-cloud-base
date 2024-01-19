@@ -25,8 +25,6 @@ alerting_read_access:
   cluster_permissions:
     - 'cluster:admin/opendistro/alerting/alerts/get'
     - 'cluster:admin/opendistro/alerting/destination/get'
-    - 'cluster:admin/opendistro/alerting/destination/email_group/search'
-    - 'cluster:admin/opendistro/alerting/destination/email_account/search'
     - 'cluster:admin/opendistro/alerting/monitor/get'
     - 'cluster:admin/opendistro/alerting/monitor/search'
 
@@ -204,7 +202,7 @@ cross_cluster_replication_follower_full_access:
 ml_read_access:
   reserved: true
   cluster_permissions:
-    - 'cluster:admin/openserach/ml/stats'
+    - 'cluster:admin/opensearch/ml/stats/nodes'
     - 'cluster:admin/opensearch/ml/models/get'
     - 'cluster:admin/opensearch/ml/models/search'
     - 'cluster:admin/opensearch/ml/tasks/get'
@@ -244,11 +242,11 @@ ml_full_access:
 index_migration:
   reserved: true
   cluster_permissions:
-        - "create_index"
-        - "indices:data/write/reindex"
-        - "indices:data/write/index"
-        - "cluster:monitor/task/get"
-        - "indices:data/write/bulk*"
+    - "create_index"
+    - "indices:data/write/reindex"
+    - "indices:data/write/index"
+    - "cluster:monitor/task/get"
+    - "indices:data/write/bulk*"
   index_permissions:
     - index_patterns:
         - '*'
@@ -295,36 +293,18 @@ bootstrap:
       allowed_actions:
         - 'crud'
         - 'create_index'
-        -
-customer_role:
-  reserved: false
-  hidden: false
+
+read_prometheus:
+  reserved: true
   cluster_permissions:
-    - "cluster_composite_ops_ro"
-    - "kibana_all_read"
+    - "cluster:monitor/prometheus/metrics" # allow access to the prometheus plugin (the prometheus metrics collector doesn't send authentication information)
+    # allow the plugin to access the required metrics (the plugin also doesn't send authentication information)
+    - "cluster:monitor/health"
+    - "cluster:monitor/state"
+    - "cluster:monitor/nodes/info"
+    - "cluster:monitor/nodes/stats"
   index_permissions:
     - index_patterns:
       - "*"
       allowed_actions:
-        - "read"
-        - "kibana_all_read"
-  tenant_permissions:
-    - tenant_patterns:
-      - "global_tenant"
-      allowed_actions:
-        - "kibana_all_read"
-
-#read_prometheus:
-#  reserved: true
-#  cluster_permissions:
-#    - "cluster:monitor/prometheus/metrics" # allow access to the prometheus plugin (the prometheus metrics collector doesn't send authentication information)
-#    # allow the plugin to access the required metrics (the plugin also doesn't send authentication information)
-#    - "cluster:monitor/health"
-#    - "cluster:monitor/state"
-#    - "cluster:monitor/nodes/info"
-#    - "cluster:monitor/nodes/stats"
-#  index_permissions:
-#    - index_patterns:
-#      - "*"
-#      allowed_actions:
-#      - "indices:monitor/stats"
+      - "indices:monitor/stats"

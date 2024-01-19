@@ -4,15 +4,15 @@ _meta:
 
 config:
   dynamic:
+    http:
+      anonymous_auth_enabled: true # Enabled for prometheus scrape with limited access
+      xff:
+        enabled: false
+        internalProxies: '192\.168\.0\.10|192\.168\.0\.11' # regex pattern
     kibana:
       index: .kibana
       multitenancy_enabled: false
       server_username: kibanaserver
-    http:
-      anonymous_auth_enabled: true
-      xff:
-        enabled: false
-        internalProxies: 192\.168\.0\.10|192\.168\.0\.11
     authc:
       basic_internal_auth_domain:
         description: "Authenticate via HTTP Basic against internal users database"
@@ -24,16 +24,3 @@ config:
           challenge: true
         authentication_backend:
           type: intern
-      openid_auth_domain:
-        authentication_backend:
-          type: noop
-        http_authenticator:
-          challenge: false
-          config:
-            openid_connect_url: https://auth.pingone.eu/277c89a6-fb5d-477d-b367-2422f473dc9b/as/.well-known/openid-configuration
-            roles_key: groups
-            subject_key: name
-            type: openid
-        http_enabled: true
-        order: 1
-        transport_enabled: true

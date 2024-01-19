@@ -6,14 +6,14 @@ spec:
   nodePools:
     - component: hot
       jvm: -Xms8g -Xmx8g
-      replicas: 7
+      replicas: 7 # do not change replicas
       resources:
         requests:
-          memory: 10Gi
-          cpu: "8"
-        limits:
           memory: 8Gi
           cpu: "4"
+        limits:
+          memory: 10Gi
+          cpu: "8"
       roles: # Do not change roles
         - "cluster_manager"
         - "data"
