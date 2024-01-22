@@ -129,7 +129,7 @@ spec:
         enable: true
         maxUnavailable: 1
       additionalConfig:
-        node.attr.temp: "hot"
+        node.attr.temp: "warm"
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:

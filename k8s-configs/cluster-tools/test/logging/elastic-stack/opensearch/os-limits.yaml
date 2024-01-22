@@ -6,7 +6,6 @@ spec:
   nodePools:
     - component: hot
       jvm: -Xms6g -Xmx6g
-      replicas: 3
       resources:
         requests:
           memory: 6Gi
@@ -14,9 +13,3 @@ spec:
         limits:
           memory: 8Gi
           cpu: "6"
-      roles: # Do not change roles
-        - "cluster_manager"
-        - "data"
-        - "ingest"
-        - "remote_cluster_client"
-        - "search"
