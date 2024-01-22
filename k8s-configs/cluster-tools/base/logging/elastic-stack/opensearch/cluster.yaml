@@ -23,39 +23,44 @@ spec:
       node.search.cache.size: 500m
       cluster.max_shards_per_node: "10000"
       prometheus.indices: "false"
+      plugins:
+        security:
+          audit.type: internal_opensearch
+          enable_snapshot_restore_privilege: "true"
+          check_snapshot_restore_write_privileges: "true"
   dashboards:
     enable: true
     version: 2.8.0
-    env:
-      - name: OPENID_CONNECT_URL
-        valueFrom:
-          secretKeyRef:
-            name: opensearch-dashboard-oidc
-            key: connect_url
-      - name: OPENID_CLIENT_ID
-        valueFrom:
-          secretKeyRef:
-            name: opensearch-dashboard-oidc
-            key: client_id
-      - name: OPENID_CLIENT_SECRET
-        valueFrom:
-          secretKeyRef:
-            name: opensearch-dashboard-oidc
-            key: client_secret
-    additionalConfig:
-      opensearch.ssl.verificationMode: "Full"
-      opensearch_security.auth.anonymous_auth_enabled: "false"
-      opensearch_security.auth.type: |
-        ["openid", "basicauth"]
-      opensearch.requestHeadersAllowlist: |
-        ["authorization", "securitytenant"]
-      opensearch_security.openid.trust_dynamic_headers: "true"
-      opensearch_security.multitenancy.enabled: "false"
-      opensearch_security.openid.connect_url: "${OPENID_CONNECT_URL}"
-      opensearch_security.openid.client_id: "${OPENID_CLIENT_ID}"
-      opensearch_security.openid.client_secret: "${OPENID_CLIENT_SECRET}"
-      opensearch_security.openid.scope: "openid profile name groups"
-      opensearch_security.auth.multiple_auth_enabled: "true"
+#    env:
+#      - name: OPENID_CONNECT_URL
+#        valueFrom:
+#          secretKeyRef:
+#            name: opensearch-dashboard-oidc
+#            key: connect_url
+#      - name: OPENID_CLIENT_ID
+#        valueFrom:
+#          secretKeyRef:
+#            name: opensearch-dashboard-oidc
+#            key: client_id
+#      - name: OPENID_CLIENT_SECRET
+#        valueFrom:
+#          secretKeyRef:
+#            name: opensearch-dashboard-oidc
+#            key: client_secret
+#    additionalConfig:
+#      opensearch.ssl.verificationMode: "Full"
+#      opensearch_security.auth.anonymous_auth_enabled: "false"
+#      opensearch_security.auth.type: |
+#        ["openid", "basicauth"]
+#      opensearch.requestHeadersAllowlist: |
+#        ["authorization", "securitytenant"]
+#      opensearch_security.openid.trust_dynamic_headers: "true"
+#      opensearch_security.multitenancy.enabled: "false"
+#      opensearch_security.openid.connect_url: "${OPENID_CONNECT_URL}"
+#      opensearch_security.openid.client_id: "${OPENID_CLIENT_ID}"
+#      opensearch_security.openid.client_secret: "${OPENID_CLIENT_SECRET}"
+#      opensearch_security.openid.scope: "openid profile name groups"
+#      opensearch_security.auth.multiple_auth_enabled: "true"
     opensearchCredentialsSecret:
       name: opensearch-dashboard-credentials
     replicas: 1

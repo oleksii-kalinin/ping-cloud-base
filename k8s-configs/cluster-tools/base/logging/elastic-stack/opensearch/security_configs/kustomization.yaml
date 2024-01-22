@@ -6,7 +6,6 @@ namespace: elastic-stack-logging
 resources:
   - os-admin-secret.yaml
   - os-dashboard-secret.yaml
-  - os-dashboards-oidc.yaml
 
 secretGenerator:
   - name: opensearch-securityconfig
