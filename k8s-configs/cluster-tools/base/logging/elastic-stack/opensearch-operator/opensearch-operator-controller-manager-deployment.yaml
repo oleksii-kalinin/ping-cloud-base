@@ -93,6 +93,8 @@ spec:
           value: cluster.local
         - name: PARALLEL_RECOVERY_ENABLED
           value: "true"
+        - name: SKIP_INIT_CONTAINER
+          value: "true"
         securityContext:
           allowPrivilegeEscalation: false
       nodeSelector:
