@@ -115,6 +115,7 @@
 - Improve Logstash parsing of nginx ingress-access logs
 - Implement IRSA role for Logstash
 - Implement IRSA role for OpenSearch
+- Upgrade grafana-operator to 5.6.0
 - Deploy opensearch-operator with opensearch cluster
 
 _Changes:_
@@ -273,6 +274,7 @@ _Changes:_
 - [X] PDO-6526 Update integration tests to be able to run locally
 - [X] PDO-6558 Implement IRSA role for Logstash
 - [X] PDO-6559 Implement IRSA role for OpenSearch
+- [X] PDO-6560 Upgrade grafana-operator, grafana-folders
 - [X] PDO-6570 Nginx ingress-access logs are sent to the logstash index pattern instead of ingress-access index pattern
 - [X] PDO-6585 Upgrade all AWSCLI containers to the most recent stable version that includes support for ARM, v2.+
 - [X] PDO-6599 Migrate opensearch from plain yaml to the operator
