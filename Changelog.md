@@ -113,6 +113,8 @@
 - Upgrade all AWSCLI containers to the most recent stable version that includes support for ARM, v2.+
 - Update PCB with toolkit image used as replacement for bitnami/kubectl - Leftover part
 - Improve Logstash parsing of nginx ingress-access logs
+- Implement IRSA role for Logstash
+- Implement IRSA role for OpenSearch
 - Deploy opensearch-operator with opensearch cluster
 
 _Changes:_
@@ -269,6 +271,8 @@ _Changes:_
 - [X] PDO-6494 Implement Shared db cache to enhance support of multiple backends
 - [X] PDO-6506 Update to fix karpenter provisoner config
 - [X] PDO-6526 Update integration tests to be able to run locally
+- [X] PDO-6558 Implement IRSA role for Logstash
+- [X] PDO-6559 Implement IRSA role for OpenSearch
 - [X] PDO-6570 Nginx ingress-access logs are sent to the logstash index pattern instead of ingress-access index pattern
 - [X] PDO-6585 Upgrade all AWSCLI containers to the most recent stable version that includes support for ARM, v2.+
 - [X] PDO-6599 Migrate opensearch from plain yaml to the operator
