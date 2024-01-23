@@ -14,6 +14,7 @@ resources:
 - cluster.yaml
 - service.yaml
 - storageclass.yaml
+- serviceaccount.yaml
 
 openapi:
   path: opensearch-schema.json
