@@ -146,11 +146,6 @@ spec:
 
 ################################################
 #                OpenSearch
-# WARNING: Do not change roles for the nodePools
-# WARNING: Before applying patches to the Opensearch verify replicas count.
-# Use kubectl get pods -n elastic-stack-logging | grep opensearch-cluster
-# If opensearch-cluster-hot and opensearch-cluster-hot more than 3 - adjust replicas
-# count in patches according to the existence replicas.
 ################################################
 
 # Increase CPU resources
@@ -161,20 +156,12 @@ metadata:
 spec:
   nodePools:
     - component: hot
-      replicas: 3 # This should be equal to the existing replicas
       resources:
         requests:
           cpu: "3"
         limits:
           cpu: "6"
-      roles: # Do not change roles
-        - "cluster_manager"
-        - "data"
-        - "ingest"
-        - "remote_cluster_client"
-        - "search"
     - component: warm
-      replicas: 3 # This should be equal to the existing replicas
       resources:
         requests:
           cpu: "2"
@@ -193,29 +180,18 @@ spec:
   nodePools:
     - component: hot
       jvm: -Xmx5g -Xms5g
-      replicas: 3 # This should be equal to the existing replicas
       resources:
         requests:
           memory: 6Gi
         limits:
           memory: 6Gi
-      roles: # Do not change roles
-        - "cluster_manager"
-        - "data"
-        - "ingest"
-        - "remote_cluster_client"
-        - "search"
     - component: warm
-      replicas: 3 # This should be equal to the existing replicas
       jvm: -Xmx5g -Xms5g
       resources:
         requests:
           memory: 6Gi
         limits:
           memory: 6Gi
-      roles: # Do not change roles
-        - "remote_cluster_client"
-        - "data"
 
 ################################################
 #                End Opensearch patches
