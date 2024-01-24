@@ -4,9 +4,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 namespace: elastic-stack-logging
 
 resources:
-  - os-admin-secret.yaml
   - os-dashboard-secret.yaml
-  - os-dash-oidc.yaml
 
 # The secret values for config.yml and roles_mapping.yml are managed by the p1as-oauth init container, and
 # can be found in the p14c-integration image.
