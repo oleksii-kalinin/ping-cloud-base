@@ -89,7 +89,7 @@ spec:
         - --loglevel=info
         command:
         - /manager
-        image: "public.ecr.aws/opsterio/opensearch-operator:2.4.0"
+        image: "public.ecr.aws/r2h3l6e4/pingcloud-clustertools/opensearch-operator/opensearch-operator:2.4.0"
         name: operator-controller-manager
         imagePullPolicy: "Always"
         resources:

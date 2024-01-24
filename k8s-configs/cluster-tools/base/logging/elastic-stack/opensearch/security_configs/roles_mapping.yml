@@ -1,0 +1,36 @@
+_meta:
+  type: "rolesmapping"
+  config_version: 2
+all_access:
+  reserved: false
+  backend_roles:
+  - "admin"
+  description: "Maps admin to all_access"
+logstash:
+  reserved: false
+  backend_roles:
+  - "logstash"
+logstash_write:
+  reserved: false
+  backend_roles:
+  - "logstash"
+kibana_user:
+  reserved: false
+  backend_roles:
+  - "kibanauser"
+  description: "Maps kibanauser to kibana_user"
+kibana_server:
+  reserved: true
+  users:
+  - "kibanaserver"
+index_migration:
+  reserved: true
+  users:
+  - "indexmigration"
+bootstrap:
+  reserved: true
+  users:
+  - "bootstrap"
+read_prometheus:
+  backend_roles:
+    - "opendistro_security_anonymous_backendrole"

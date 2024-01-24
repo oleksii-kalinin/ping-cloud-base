@@ -1,0 +1,28 @@
+_meta:
+  type: "config"
+  config_version: 2
+config:
+  dynamic:
+    kibana:
+      index: .kibana
+      multitenancy_enabled: false
+      server_username: kibanaserver
+    http:
+      anonymous_auth_enabled: true # Enabled for prometheus scrape with limited access
+      xff:
+        enabled: false
+        internalProxies: '192\.168\.0\.10|192\.168\.0\.11' # regex pattern
+    authc:
+      # OpenSearch Dashboards requires that the internal OpenSearch Dashboards server user can authenticate through
+      # HTTP basic authentication, so we must configure two authentication domains. For OpenID Connect, the HTTP basic
+      # domain has to be placed first in the chain. (HTTP is set to `order: 0`, and OIDC is `order: 1`)
+      basic_internal_auth_domain:
+        description: "Authenticate via HTTP Basic against internal users database"
+        http_enabled: true
+        transport_enabled: true
+        order: 0
+        http_authenticator:
+          type: basic
+          challenge: false
+        authentication_backend:
+          type: intern
