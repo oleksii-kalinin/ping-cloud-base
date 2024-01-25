@@ -18,7 +18,6 @@ secretGenerator:
       - roles.yml
       - tenants.yml
       - allowlist.yml
-      - internal_users.yml
       - roles_mapping.yml
 generatorOptions:
   disableNameSuffixHash: true
