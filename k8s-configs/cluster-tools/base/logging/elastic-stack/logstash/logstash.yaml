@@ -389,14 +389,14 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: logstash-elastic
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: os-logstash-creds
-  annotations:
-    sealedsecrets.bitnami.com/managed: "true"
-    argocd.argoproj.io/sync-options: Prune=false
-data:
-  username: bG9nc3Rhc2g=
-  password: bWk3ZWl0ZTJvb25vbzhFa3UxdWZvbzRlZ2gxamFpajI=
+#---
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  name: os-logstash-creds
+#  annotations:
+#    sealedsecrets.bitnami.com/managed: "true"
+#    argocd.argoproj.io/sync-options: Prune=false
+#data:
+#  username: bG9nc3Rhc2g=
+#  password: bWk3ZWl0ZTJvb25vbzhFa3UxdWZvbzRlZ2gxamFpajI=
