@@ -7,7 +7,6 @@ resources:
 - files
 - enrichment-resources.yaml
 - logging-bootstrap.yaml
-- p1as-bootstrap.yaml
 
 generatorOptions:
   disableNameSuffixHash: true

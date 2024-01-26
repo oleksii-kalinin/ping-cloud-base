@@ -15,3 +15,13 @@ resources:
 - opensearch-operator-metrics-reader-clusterrole.yaml
 - opensearch-operator-proxy-clusterrolebinding.yaml
 - opensearch-operator-proxy-role-clusterrole.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+- name: p1as-bootstrap
+
+- name: p1as-bootstrap-resources
+  files:
+    - p1as-bootstrap-resources.yaml
