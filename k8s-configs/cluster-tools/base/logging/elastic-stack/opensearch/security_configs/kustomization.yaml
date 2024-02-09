@@ -18,7 +18,3 @@ secretGenerator:
       - tenants.yml
 generatorOptions:
   disableNameSuffixHash: true
-  annotations:
-    sealedsecrets.bitnami.com/managed: "true"
-    sealedsecrets.bitnami.com/patch: "true"
-    argocd.argoproj.io/sync-options: Prune=false
