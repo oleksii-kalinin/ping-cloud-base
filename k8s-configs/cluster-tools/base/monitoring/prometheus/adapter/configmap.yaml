@@ -16,10 +16,12 @@ metadata:
 data:
   config.yaml: |
     rules:
-      - seriesQuery: 'nginx_ingress_controller_nginx_process_requests_total{kubernetes_namespace=~"ingress.+"}'
-        name: {as: "requests-per-second"}
-        resources:
-          overrides:
-            namespace: {resource: "kubernetes_namespace"}
-            pod: {resource: "controller_pod"}
-        metricsQuery: 'sum(rate(nginx_ingress_controller_nginx_process_requests_total{kubernetes_namespace=~"ingress.+"}[5m])) by (controller_pod)'
+    - seriesQuery: 'nginx_ingress_controller_nginx_process_requests_total{kubernetes_namespace!="", controller_pod!=""}'
+      resources:
+        overrides:
+          kubernetes_namespace: {resource: "namespace"}
+          controller_pod: {resource: "pod"}
+      name:
+        matches: "^(.*)_total"
+        as: "${1}_per_second"
+      metricsQuery: 'sum(rate(<<.Series>>{<<.LabelMatchers>>}[2m])) by (<<.GroupBy>>)'
