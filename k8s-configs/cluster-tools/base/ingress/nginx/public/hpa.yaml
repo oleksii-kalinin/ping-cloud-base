@@ -29,14 +29,3 @@ spec:
         target:
           type: AverageValue
           averageValue: "30000m"
-    - type: Object
-      object:
-        metric:
-          name: requests-per-second
-        describedObject:
-          apiVersion: networking.k8s.io/v1
-          kind: Ingress
-          name: pingaccess-was-ingress
-        target:
-          type: Value
-          value: 10k
