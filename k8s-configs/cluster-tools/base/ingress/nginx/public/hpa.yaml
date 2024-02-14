@@ -22,14 +22,10 @@ spec:
         target:
           type: Utilization
           averageUtilization: 50
-    - type: Object
-      object:
-        describedObject:
-          kind: Ingress
-          apiVersion: networking.k8s.io/v1
-          name: pingaccess-was-ingress
+    - type: Pods
+      pods:
         metric:
-          name: requests-per-second
+          name: nginx_ingress_controller_nginx_process_requests_per_second
         target:
-          type: Value
-          value: 10k
+          type: AverageValue
+          value: "30000m"
